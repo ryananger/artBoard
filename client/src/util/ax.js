@@ -3,8 +3,8 @@ import axios from 'axios';
 var urlBase = process.env.URL;
 
 var ax = {
-  getFeatured: function(title, setImageData) {
-    axios.get(urlBase + 'search', {params: {search: title}})
+  searchPhotos: function(query, setImageData) {
+    axios.get(urlBase + 'search', {params: {search: query}})
       .then(function(response) {
         console.log(response.data);
 

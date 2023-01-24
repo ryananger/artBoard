@@ -9,19 +9,20 @@ const featured = [
   {title: 'Buildings'},
   {title: 'Action', query: 'people in action combat motion'},
   {title: 'Sci-Fi', query: 'science fiction scifi space future robots mars'},
-  {title: 'Fantasy', query: 'fantasy elves dwarves fae wizards dragons orcs'}
+  {title: 'Fantasy', query: 'fantasy elves dwarves fae dragons orcs'}
 ];
 
-const Featured = function({setImageData}) {
-
+const Featured = function({setImageData, setSearch}) {
   var handleSearch = function(index) {
     var search = featured[index];
 
     if (search.query) {
-      ax.getFeatured(search.query, setImageData);
+      ax.searchPhotos(search.query, setImageData);
     } else {
-      ax.getFeatured(search.title, setImageData);
+      ax.searchPhotos(search.title, setImageData);
     }
+
+    setSearch(search);
   };
 
   var renderButtons = function() {
