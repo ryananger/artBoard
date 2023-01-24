@@ -16,6 +16,13 @@ const App = function() {
   const [imageData, setImageData] = useState([]);
   const [search, setSearch] = useState(defaultQuery);
 
+  const state = {
+    imageData:    imageData,
+    setImageData: setImageData,
+    search:       search,
+    setSearch:    setSearch
+  };
+
   var getPhotos = function() {
     ax.searchPhotos(search.query, setImageData);
   };
@@ -23,13 +30,13 @@ const App = function() {
   useEffect(getPhotos, []);
 
   return (
-    <div className='app v'>
-      <Header />
-      <Featured setImageData={setImageData} setSearch={setSearch}/>
-      <ImageViewer imageData={imageData} />
+    <div id='app' className='app v'>
+      <Header state={state}/>
+      <Featured state={state}/>
+      <ImageViewer state={state}/>
     </div>
   )
-}
+};
 
 export default App;
 

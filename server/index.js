@@ -15,6 +15,10 @@ app.get('/search', function(req, res) {
   controller.searchPhotos(req, res);
 });
 
+app.get('/search/:num', function(req, res) {
+  controller.searchPhotos(req, res, req.params.num);
+})
+
 app.get('/collection/:id', function(req, res) {
   controller.getCollection(req.params.id, res);
 })

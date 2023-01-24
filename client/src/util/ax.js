@@ -11,6 +11,20 @@ var ax = {
         setImageData(response.data);
       })
   },
+  getPage: function(query, num, state, setFetching) {
+    var imageData = state.imageData;
+    var setImageData = state.setImageData;
+
+    axios.get(urlBase + 'search/' + num, {params: {search: query}})
+      .then(function(response) {
+        var newData = imageData.concat(response.data);
+
+        setFetching(false);
+        setImageData(newData);
+
+        console.log(newData);
+      })
+  },
   getCollection: function(id, setImageData) {
     axios.get(urlBase + 'collection/' + id)
       .then(function(response) {

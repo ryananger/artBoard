@@ -1,19 +1,28 @@
 import React, { useState, useEffect } from 'react';
+import ax from '../util/ax.js';
 
-const ImageViewer = ({imageData}) => {
-  const [currentIndex, setCurrentIndex] = useState(0);
+const ImageViewer = ({state}) => {
+  const [currentPage, setPage] = useState(1);
+  const [fetching, setFetching] = useState(false);
+  const imageData = state.imageData;
+  const search = state.search;
 
   var handleScroll = function(e) {
-    var top = e.target.scrollTop;
-    var height = e.target.offsetHeight;
+    var scroll = e.target.scrollTop + e.target.clientHeight;
+    var height = e.target.scrollHeight;
 
-    var currentPage = Math.round(top/height);
+    if (scroll > height * 0.6 && !fetching) {
+      var newPageNum = currentPage + 1;
 
-    //console.log(top, height);
+      setPage(newPageNum);
+      setFetching(true);
 
-    if (currentPage !== currentIndex) {
-      setCurrentIndex(currentPage);
+      ax.getPage(search.query, newPageNum, state, setFetching);
     }
+
+    // if (currentPage !== currentIndex) {
+    //   setCurrentIndex(currentPage);
+    // }
   };
 
   var renderImages = function() {
@@ -21,8 +30,20 @@ const ImageViewer = ({imageData}) => {
 
     imageData.map(function(image, i) {
       var img = (
-        <div key={i} className='imageContainer v'>
-          <img key={i + '_' + image.id} src={image.src.medium} className='searchImage'/>
+        <div
+          key={i}
+          className='imageContainer v'
+          style={{aspectRatio: image.width/image.height}}
+        >
+          <img
+            key={image.id}
+            src={image.src.medium}
+            className='searchImage'
+            style={{
+              aspectRatio: image.width/image.height,
+              backgroundColor: image.avg_color
+            }}
+          />
         </div>
       );
 

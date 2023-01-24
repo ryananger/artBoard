@@ -5,22 +5,21 @@ import ax           from '../util/ax.js';
 const featured = [
   {title: 'Wildlife', query: 'wildlife animals'},
   {title: 'Nature', query: 'nature landscapes'},
-  {title: 'People', query: 'men women people faces bodies clothes posing casual'},
-  {title: 'Buildings'},
+  {title: 'People', query: 'man woman men women people faces bodies clothes posing casual'},
+  {title: 'Buildings', query: 'buildings'},
   {title: 'Action', query: 'people in action combat motion'},
-  {title: 'Sci-Fi', query: 'science fiction scifi space future robots mars'},
-  {title: 'Fantasy', query: 'fantasy elves dwarves fae dragons orcs'}
+  {title: 'Sci-Fi', query: 'science-fiction scifi alien space robots mars'},
+  {title: 'Fantasy', query: 'elves dwarves fae forest dragons orcs'}
 ];
 
-const Featured = function({setImageData, setSearch}) {
+const Featured = function({state}) {
+  const setImageData = state.setImageData;
+  const setSearch = state.setSearch;
+
   var handleSearch = function(index) {
     var search = featured[index];
 
-    if (search.query) {
-      ax.searchPhotos(search.query, setImageData);
-    } else {
-      ax.searchPhotos(search.title, setImageData);
-    }
+    ax.searchPhotos(search.query, setImageData);
 
     setSearch(search);
   };
