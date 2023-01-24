@@ -1,0 +1,124 @@
+html, body, #root, .app {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  width: 100%;
+  font-family: Jost;
+
+  background-color: rgb(233, 160, 140);
+}
+
+h1, h2, h3 {
+  margin: 0;
+}
+
+.v {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.h {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* HEADER */
+
+.header {
+  width: 98vw;
+  height: 60px;
+  padding-left: 1vw;
+  padding-right: 1vw;
+  border: 1px solid #5b2323;
+  border-style: none none solid none;
+  background-color: rgb(252, 201, 171);
+}
+
+/* FEATURED BUTTONS */
+
+.featuredButtons {
+  margin: 0.5vw;
+  width: 70vw;
+}
+
+.featuredButton {
+  padding: 0.5vw;
+  padding-bottom: 0.125vw;
+  padding-top: 0.125vw;
+  border: 1px solid rgb(145, 83, 66);
+  background-color: rgb(252, 201, 171);
+
+  min-width: 100px;
+  text-align: center;
+  user-select: none;
+}
+
+.featuredButton:hover {
+  background-color: rgb(255 212 188);
+  cursor: pointer;
+}
+
+/* IMAGE VIEWER */
+
+.imageViewer {
+  overflow: scroll;
+  overflow-x: unset;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  width: 80vw;
+  height: 100%;
+
+  margin: 2vw;
+  margin-top: 0;
+  padding: 0.5vw;
+  border: 3px solid #5b2323;
+  border-style: solid none;
+}
+
+::-webkit-scrollbar {
+  border: 1px solid #5b2323;
+  background-color: #5b232340;
+  width: 0.7vw;
+}
+
+::-webkit-scrollbar-thumb {
+  border: 1px solid #5b2323;
+  background-color: rgb(252, 201, 171);
+}
+
+.imageViewer::-webkit-scrollbar,
+.imageViewer::-webkit-scrollbar-thumb {
+  border: 1px solid #ac6650;
+}
+
+.imageViewer::-webkit-scrollbar {
+  background: none;
+  border-style: none;
+}
+
+.imageContainer {
+  max-width: 30%;
+  height: 30%;
+
+  margin: 0.5vw;
+}
+
+.searchImage {
+  width: 90%;
+  max-height: 90%;
+  object-fit: contain;
+  border: 2px solid #5b2323;
+  box-shadow: 0 3px 4px #5b233790;
+}
+
+.searchImage:hover {
+  object-fit: cover;
+  cursor: pointer;
+  width: 100%;
+}
