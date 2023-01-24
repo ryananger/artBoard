@@ -19,7 +19,7 @@ const App = function() {
   return (
     <div className='app v'>
       <Header />
-      <Featured />
+      <Featured setImageData={setImageData}/>
       <ImageViewer imageData={imageData} />
     </div>
   )

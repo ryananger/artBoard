@@ -4,23 +4,12 @@ var pexelsBase = 'http://api.pexels.com/v1/';
 var pexelsHeader = {headers: {'Authorization': process.env.PEXELS_API}};
 
 var controller = {
-  getFeatured: function(res) {
-    axios.get(pexelsBase + 'collections/featured?per_page=80&page=2', pexelsHeader)
-      .then(function(response) {
-        var id = response.data.collections[0].id;
+  searchPhotos: function(req, res) {
+    var search = req.query.search;
 
-        controller.getPhotosFromFeatured(id, response.data.collections, res);
-      })
-  },
-  getPhotosFromFeatured: function(id, collections, res) {
-    axios.get(`${pexelsBase}collections/${id}?type=photos&per_page=50`, pexelsHeader)
+    axios.get(`${pexelsBase}search?query=${search}&per_page=50`, pexelsHeader)
       .then(function(response) {
-        var sendBody = {
-          collections: collections,
-          photos: response.data.media
-        };
-
-        res.json(sendBody);
+        res.json(response.data.photos);
       })
   },
   getCollection: function(id, res) {

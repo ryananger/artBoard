@@ -11,8 +11,8 @@ app.use(express.json());
 app.use(express.urlencoded({extended: true}));
 app.use(express.static(path.join(__dirname, '../client/dist')));
 
-app.get('/featured', function(req, res) {
-  controller.getFeatured(res);
+app.get('/search', function(req, res) {
+  controller.searchPhotos(req, res);
 });
 
 app.get('/collection/:id', function(req, res) {

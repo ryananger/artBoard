@@ -3,12 +3,12 @@ import axios from 'axios';
 var urlBase = process.env.URL;
 
 var ax = {
-  getFeatured: function(setFeatured) {
-    axios.get(urlBase + 'featured')
+  getFeatured: function(title, setImageData) {
+    axios.get(urlBase + 'search', {params: {search: title}})
       .then(function(response) {
+        console.log(response.data);
 
-        console.log(response.data)
-        setFeatured(response.data.collections);
+        setImageData(response.data);
       })
   },
   getCollection: function(id, setImageData) {
