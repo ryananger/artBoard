@@ -1,5 +1,5 @@
 :root {
-  --bg: #ffe1d7;
+  --bg: #ffd3c4;
   --salmon: #ff9d90;
   --darkSalmon: #a0483c;
   --leaf: #d1e275;
@@ -90,6 +90,36 @@ h1, h2, h3 {
   cursor: pointer;
 }
 
+/* NAVBAR */
+
+.navButtons {
+  position: absolute;
+  top: 15vh;
+  left: 0;
+  min-height: 120px;
+  width: 42px;
+  margin: 1vh;
+  padding-top: 0.25vh;
+  padding-bottom: 0.25vh;
+  border-radius: 21px;
+  background-color: var(--cream);
+
+  border: 2px solid var(--darkSalmon);
+  box-sizing: border-box;
+  box-shadow: 0 2px 3px var(--shadow);
+}
+
+.navButton {
+  color: var(--salmon);
+  margin-top: 0.5vh;
+  margin-bottom: 0.5vh;
+}
+
+.navButton:hover {
+  cursor: pointer;
+  color: var(--darkText);
+}
+
 /* FEATURED BUTTONS */
 
 .featuredButtons {
@@ -138,6 +168,8 @@ h1, h2, h3 {
   padding: 0.5vh;
   border: 3px solid var(--darkText);
   border-style: solid none;
+
+  background: radial-gradient(ellipse at bottom, #ff909080, 30%, transparent 70%);
 }
 
 ::-webkit-scrollbar {
@@ -230,7 +262,7 @@ h1, h2, h3 {
   position: absolute;
   top: 0;
   left: 0;
-  justify-content: center;
+  justify-content: space-between;
 
   background-color: #14000090;
 
@@ -269,6 +301,10 @@ h1, h2, h3 {
 .zoomButton:hover {
   cursor: pointer;
   color: var(--leaf);
+}
+
+.next, .prev {
+  margin: 0.5vh;
 }
 
 .next {
@@ -367,4 +403,17 @@ h1, h2, h3 {
 .signUpText:hover, .backButton:hover {
   cursor: pointer;
   color: var(--darkSalmon)
+}
+
+/* PROFILE */
+
+.profile {
+  width: 100%;
+  height: 100%;
+}
+
+.profileBody {
+  padding: 2vh;
+  background-color: var(--cream);
+  border-radius: 40px;
 }

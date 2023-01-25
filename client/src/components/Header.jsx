@@ -4,6 +4,7 @@ import ax           from '../util/ax.js';
 import cookieHandle from '../util/cookieHandle.js';
 
 import SearchBar from './SearchBar.jsx';
+import NavBar from './NavBar.jsx';
 
 const Header = function({state}) {
   var renderButton = function() {
@@ -24,6 +25,7 @@ const Header = function({state}) {
 
   return (
     <div className='header h'>
+      {state.user && <NavBar />}
       <div className='spacer h'>
         <h1>artBoard</h1>
       </div>

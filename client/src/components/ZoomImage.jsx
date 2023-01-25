@@ -5,7 +5,6 @@ import {
 } from 'react-icons/bs';
 
 import ax from '../util/ax.js';
-
 import ImageButtons from './ImageButtons.jsx';
 
 const ZoomImage = ({imageData, setZoom, index}) => {

@@ -5,6 +5,7 @@ import helpers      from '../util/helpers.js';
 import cookieParse  from '../util/cookieHandle.js';
 
 import Login       from './Login.jsx';
+import Profile     from './Profile.jsx';
 import Header      from './Header.jsx';
 import Featured    from './Featured.jsx';
 import ImageViewer from './ImageViewer.jsx';
@@ -50,6 +51,8 @@ const App = function() {
           <ImageViewer state={state}/>
           </>
         );
+      case 'profile':
+        return <Profile state={state}/>;
     }
   }
 

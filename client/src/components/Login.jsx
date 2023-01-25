@@ -15,15 +15,15 @@ const Login = function({state}) {
     var form = e.target;
 
     if (signUp) {
-      auth.signUp(form.email.value, form.pass.value, setUser);
+      auth.signUp(form.email.value, form.pass.value, state);
     } else {
-      auth.signIn(form.email.value, form.pass.value, setUser);
+      auth.signIn(form.email.value, form.pass.value, state);
     }
   };
 
   var renderForm = function() {
     return (
-      <form id='loginForm' className='loginForm v' onSubmit={handleSubmit}>
+      <form id='loginForm' className='loginForm v' onSubmit={handleSubmit} autoComplete>
         <div className='formHead v'>
           <h2>
             Welcome to artBoard!
@@ -31,8 +31,8 @@ const Login = function({state}) {
         </div>
         <div className='formBody v'>
           <div className='loginInputs v'>
-            <input className='loginInput' name='email' type='text' placeholder='Email address!'/>
-            <input className='loginInput' name='pass'  type='password' placeholder='Password!'/>
+            <input className='loginInput' name='email' autoComplete='off' type='text' placeholder='Email address!'/>
+            <input className='loginInput' name='pass'  autoComplete='off' type='password' placeholder='Password!'/>
           </div>
           {renderSubmit()}
           <div className='signUpText' onClick={()=>{setSignUp(true)}}>
@@ -62,32 +62,6 @@ const Login = function({state}) {
       )
     }
 
-  };
-
-  var renderSignup = function() {
-    return (
-      <form id='loginForm' className='loginForm v' onSubmit={handleSubmit}>
-        <div className='formHead v'>
-          <h2>
-            Welcome to artBoard!
-          </h2>
-        </div>
-        <div className='formBody v'>
-          <div className='loginInputs v'>
-            <input className='loginInput' name='email' type='text' placeholder='Email address!'/>
-            <input className='loginInput' name='pass'  type='password' placeholder='Password!'/>
-          </div>
-          <div className='loginButtons h'>
-            <input className='loginButton' type='submit' value='sign up' onClick={()=>{setSignUp(true)}}/>
-            <input className='loginButton' type='submit' value='sign in' onClick={()=>{setSignUp(false)}}/>
-          </div>
-        </div>
-
-        <div className='backButton' onClick={()=>{state.setView('home')}}>
-          back
-        </div>
-      </form>
-    )
   };
 
   return (
