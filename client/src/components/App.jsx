@@ -2,9 +2,9 @@ import React, {useEffect, useState} from 'react';
 import '../style.css';
 import ax           from '../util/ax.js';
 import helpers      from '../util/helpers.js';
-import cookieHandle from '../util/cookieHandle.js';
+import cookieParse  from '../util/cookieHandle.js';
 
-import Auth        from './Auth.jsx';
+import Login       from './Login.jsx';
 import Header      from './Header.jsx';
 import Featured    from './Featured.jsx';
 import ImageViewer from './ImageViewer.jsx';
@@ -14,11 +14,13 @@ var defaultQuery = {
   query: 'pencil pen paper charcoal graphite art drawing sketch'
 };
 
+var cookie = cookieParse();
+
 const App = function() {
   const [imageData, setImageData] = useState([]);
   const [search, setSearch] = useState(defaultQuery);
   const [view, setView] = useState('home');
-  const [user, setUser] = useState(null);
+  const [user, setUser] = useState(cookie.user || null);
 
   const state = {
     imageData:    imageData,
@@ -40,7 +42,7 @@ const App = function() {
   var renderView = function() {
     switch (view) {
       case 'auth':
-        return <Auth state={state}/>;
+        return <Login state={state}/>;
       case 'home':
         return (
           <>

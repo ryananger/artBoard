@@ -24,9 +24,13 @@ const Header = function({state}) {
 
   return (
     <div className='header h'>
-      <h1>artBoard</h1>
+      <div className='spacer h'>
+        <h1>artBoard</h1>
+      </div>
       <SearchBar state={state}/>
-      {renderButton()}
+      <div className='spacer right h'>
+        {renderButton()}
+      </div>
     </div>
   )
 }

@@ -19,4 +19,4 @@ var cookieHandle = {
   cookieParse
 };
 
-export default cookieHandle;
+export default cookieParse;

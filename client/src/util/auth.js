@@ -15,26 +15,28 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
-var signUp = function(email, password) {
+var signUp = function(email, password, setUser) {
   createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
-      // Signed in
-      const user = userCredential.user;
+      var user = userCredential.user;
 
       console.log(userCredential);
+
+      setUser(user);
     })
     .catch((error) => {
       console.log(error);
     });
 };
 
-var signIn = function(email, password) {
+var signIn = function(email, password, setUser) {
   signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
-      // Signed in
-      const user = userCredential.user;
+      var user = userCredential.user;
 
       console.log(userCredential);
+
+      setUser(user);
     })
     .catch((error) => {
       console.log(error);

@@ -1,6 +1,7 @@
 :root {
   --bg: #ffe1d7;
   --salmon: #ff9d90;
+  --darkSalmon: #a0483c;
   --leaf: #d1e275;
   --sky: #41aadd;
   --cream: rgb(255, 239, 229);
@@ -55,6 +56,14 @@ h1, h2, h3 {
   background-color: var(--salmon);
 }
 
+.spacer {
+  min-width: 200px;
+}
+
+.right {
+  justify-content: flex-end;
+}
+
 .searchInput {
   outline: none;
   border: none;
@@ -72,6 +81,7 @@ h1, h2, h3 {
   border-radius: 40px;
   width: 60px;
   justify-content: center;
+  justify-self: flex-end;
   user-select: none;
 }
 
@@ -85,6 +95,7 @@ h1, h2, h3 {
 .featuredButtons {
   margin: 0.5vh;
   width: 70vw;
+  height: 4vh;
   max-width: 840px;
 }
 
@@ -92,7 +103,11 @@ h1, h2, h3 {
   padding: 0.5vh;
   padding-bottom: 0.125vh;
   padding-top: 0.125vh;
-  border: 1px solid var(--darkText);
+  margin: 0;
+  margin-left: 0.125vh;
+  margin-right: 0.125vh;
+  border: 1px solid var(--darkSalmon);
+  border-radius: 25px;
   background-color: var(--salmon);
 
   width: 100px;
@@ -275,11 +290,23 @@ h1, h2, h3 {
 
 .loginForm {
   height: 60%;
-  /* border: 1px solid var(--salmon); */
-  border-radius: 60px;
   width: 30%;
+  min-width: 300px;
+
+  border-radius: 60px;
   background-color: var(--cream);
   box-shadow: 0 10px 15px #dd59593d;
+  justify-content: space-around;
+}
+
+.formHead {
+  margin-top: 4vh;
+  justify-content: flex-end;
+}
+
+.formBody {
+  width: 100%;
+  margin-bottom: 4vh;
 }
 
 .loginInputs, .loginButtons {
@@ -306,13 +333,14 @@ h1, h2, h3 {
 .loginButtons {
   border: 1px solid var(--salmon);
   border-style: solid none none;
+  justify-content: center;
 }
 
 .loginButton {
   border: none;
   outline: none;
   padding: 1vh;
-  width: 45%;
+  width: 75%;
   /* margin: 1vh; */
   padding-bottom: 0.8vh;
   border-radius: 25px;
@@ -323,8 +351,20 @@ h1, h2, h3 {
   font-weight: bold;
 }
 
+.signUpText, .backButton {
+  padding: 1vh;
+  box-sizing: border-box;
+  min-height: 42px;
+  color: var(--salmon);
+}
+
 .loginButton:hover {
   cursor: pointer;
   color: var(--darkText);
   background-color: var(--leaf);
+}
+
+.signUpText:hover, .backButton:hover {
+  cursor: pointer;
+  color: var(--darkSalmon)
 }
