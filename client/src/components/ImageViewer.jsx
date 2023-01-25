@@ -30,15 +30,19 @@ const ImageViewer = ({state}) => {
     var images = [];
 
     imageData.map(function(image, i) {
-      images.push(<Image key={i} image={image} setZoom={setZoom}/>);
+      images.push(<Image key={i} image={image} setZoom={setZoom} index={i}/>);
     })
 
     return images;
   };
 
+  var toggleOverflow = function() {
+    return zoom !== null ? {overflow: 'hidden'} : {overflow: 'overlay'};
+  };
+
   return (
-    <div id='viewer' className='imageViewer h' onScroll={handleScroll}>
-      <ZoomImage image={zoom} setZoom={setZoom}/>
+    <div id='viewer' className='imageViewer h' onScroll={handleScroll} style={toggleOverflow()}>
+      {zoom !== null && <ZoomImage imageData={imageData} setZoom={setZoom} index={zoom}/>}
       {renderImages()}
     </div>
   );

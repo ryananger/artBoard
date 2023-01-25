@@ -6,24 +6,32 @@ import {
 
 import ax from '../util/ax.js';
 
-const ZoomImage = ({image, setZoom}) => {
-  if (!image) {return;}
+import ImageButtons from './ImageButtons.jsx';
+
+const ZoomImage = ({imageData, setZoom, index}) => {
+  var image = imageData[index];
+  var viewer = document.getElementById('viewer');
+  var ratio = image.width/image.height;
 
   return (
-    <div className='zoomContainer h' onClick={()=>{setZoom(null)}}>
+    <div className='zoomModal h' style={{position: 'absolute', top: viewer.scrollTop}}>
       <div className='zoomButtonContainer prev h'>
-        <Prev className='zoomButton' size={48}/>
+        {index > 0 && <Prev className='zoomButton' size={48} onClick={()=>{setZoom(index - 1)}}/>}
       </div>
-      <img
-        src={image.src.large2x}
-        className='zoomImage'
-        style={{
-          aspectRatio: image.width/image.height,
-          backgroundColor: image.avg_color
-        }}
-      />
+      <div id='zoomContainer' style={{aspectRatio: ratio}}>
+        <img
+          src={image.src.large2x}
+          className='zoomImage'
+          style={{
+            aspectRatio: ratio,
+            backgroundColor: image.avg_color
+          }}
+          onClick={()=>{setZoom(null)}}
+        />
+        <ImageButtons />
+      </div>
       <div className='zoomButtonContainer next h'>
-        <Next className='zoomButton' size={48}/>
+        {index < imageData.length - 1 && <Next className='zoomButton' size={48} onClick={()=>{setZoom(index + 1)}}/>}
       </div>
     </div>
   );

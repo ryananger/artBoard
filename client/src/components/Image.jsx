@@ -5,9 +5,10 @@ import {
 } from 'react-icons/ai';
 import ax from '../util/ax.js';
 
+import ImageButtons from './ImageButtons.jsx';
 import PreLoad from './PreLoad.jsx';
 
-const Image = ({image, setZoom}) => {
+const Image = ({image, setZoom, index}) => {
   return (
     <div className='imageContainer v' style={{aspectRatio: image.width/image.height}}>
       <img
@@ -17,12 +18,9 @@ const Image = ({image, setZoom}) => {
           aspectRatio: image.width/image.height,
           backgroundColor: image.avg_color
         }}
-        onClick={()=>{setZoom(image)}}
+        onClick={()=>{setZoom(index)}}
       />
-      <div className='imageButtons v'>
-        <Heart className='imageButton' size={32}/>
-        <Add   className='imageButton add' size={32}/>
-      </div>
+      <ImageButtons />
       <PreLoad image={image}/>
     </div>
   );

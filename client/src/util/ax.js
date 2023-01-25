@@ -1,4 +1,5 @@
 import axios from 'axios';
+import auth from './auth.js';
 
 var urlBase = process.env.URL;
 
