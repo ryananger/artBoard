@@ -104,10 +104,10 @@ h1, h2, h3 {
 }
 
 .imageContainer {
-  width: 30%;
+  max-width: 30%;
   max-height: 35%;
 
-  margin: 1vh;
+  margin: 0.5vh;
 }
 
 .searchImage {
@@ -122,7 +122,7 @@ h1, h2, h3 {
 }
 
 .searchImage:hover {
-  cursor: pointer;
+  cursor: zoom-in;
   width: 100%;
   max-height: 100%;
 }
@@ -135,4 +135,25 @@ h1, h2, h3 {
   width: 200px;
   background-color: rgb(255, 239, 229);
   border-radius: 25px;
+}
+
+/* ZOOM */
+
+.zoomContainer {
+  width: 100vw;
+  height: 100vh;
+  position: absolute;
+  top: 0;
+  left: 0;
+
+  background-color: #00000099;
+}
+
+.zoomImage {
+  cursor: zoom-out;
+  max-width: 90vw;
+  max-height: 90vh;
+
+  border: 2px solid;
+  box-shadow: 0 0 400px 200px #00000080;
 }

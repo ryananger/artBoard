@@ -1,12 +1,12 @@
 import React, {useEffect, useState} from 'react';
 import '../style.css';
-import ax           from '../util/ax.js';
+import ax from '../util/ax.js';
 
 var searchHistory = [];
 
 const SearchBar = function({state}) {
   const setImageData = state.setImageData;
-  const setSearch = state.setSearch;
+  const setSearch    = state.setSearch;
 
   var handleSearch = function(e) {
     e.preventDefault();

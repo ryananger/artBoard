@@ -6,9 +6,13 @@ var ax = {
   searchPhotos: function(query, setImageData) {
     axios.get(urlBase + 'search', {params: {search: query}})
       .then(function(response) {
-        console.log(response.data);
+        var viewer = document.getElementById('viewer');
+
+        viewer.scrollTop = 0;
 
         setImageData(response.data);
+
+        console.log(response.data)
       })
   },
   getPage: function(query, num, state, setFetching) {
@@ -21,15 +25,11 @@ var ax = {
 
         setFetching(false);
         setImageData(newData);
-
-        console.log(newData);
       })
   },
   getCollection: function(id, setImageData) {
     axios.get(urlBase + 'collection/' + id)
       .then(function(response) {
-        console.log(response.data);
-
         setImageData(response.data);
       })
   }

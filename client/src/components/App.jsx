@@ -31,8 +31,8 @@ const App = function() {
 
   return (
     <div id='app' className='app v'>
-      <Header state={state}/>
-      <Featured state={state}/>
+      <Header      state={state}/>
+      <Featured    state={state}/>
       <ImageViewer state={state}/>
     </div>
   )
