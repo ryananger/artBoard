@@ -20,8 +20,8 @@ const Image = ({image, setZoom}) => {
         onClick={()=>{setZoom(image)}}
       />
       <div className='imageButtons v'>
-        <Heart size={32}/>
-        <Add   size={32}/>
+        <Heart className='imageButton' size={32}/>
+        <Add   className='imageButton' size={32}/>
       </div>
       <PreLoad image={image}/>
     </div>

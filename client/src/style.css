@@ -1,3 +1,15 @@
+:root {
+  --bg: #ffe1d7;
+  --salmon: #ff8575;
+  --leaf: #d1e275;
+  --cream: rgb(255, 239, 229);
+
+  --lightText: rgb(255, 232, 217);
+  --darkText: #3d1a15;
+
+  --shadow: #39161096;
+}
+
 html, body, #root, .app {
   display: flex;
   flex-direction: column;
@@ -7,8 +19,8 @@ html, body, #root, .app {
   width: 100%;
   font-family: Jost;
 
-  background-color: rgb(62 47 47);
-  color: rgb(255, 232, 217);
+  background-color: var(--bg);
+  color: var(--darkText);
 }
 
 h1, h2, h3 {
@@ -36,9 +48,9 @@ h1, h2, h3 {
   height: 60px;
   padding-left: 1vw;
   padding-right: 1vw;
-  border: 1px solid black;
+  border: 1px solid var(--darkText);
   border-style: none none solid none;
-  background-color: rgb(255 201 184 / 31%);
+  background-color: var(--salmon);
 }
 
 .searchInput {
@@ -47,7 +59,7 @@ h1, h2, h3 {
   padding-left: 8px;
   height: 2.5vh;
   width: 200px;
-  background-color: rgb(255, 239, 229);
+  background-color: var(--cream);
   border-radius: 25px;
 }
 
@@ -63,17 +75,18 @@ h1, h2, h3 {
   padding: 0.5vh;
   padding-bottom: 0.125vh;
   padding-top: 0.125vh;
-  border: 1px solid black;
-  background-color: rgb(255 201 184 / 31%);
+  border: 1px solid var(--darkText);
+  background-color: var(--salmon);
 
   width: 100px;
   text-align: center;
   user-select: none;
+  font-weight: 600;
 }
 
 .featuredButton:hover {
-  background-color: rgb(255 212 188);
-  color: black;
+  background-color: var(--leaf);
+  color: var(--darkText);
   cursor: pointer;
 }
 
@@ -90,25 +103,25 @@ h1, h2, h3 {
   margin: 2vh;
   margin-top: 0;
   padding: 0.5vh;
-  border: 3px solid black;
+  border: 3px solid var(--darkText);
   border-style: solid none;
 }
 
 ::-webkit-scrollbar {
-  border: 1px solid black;
-  background-color: #00000040;
+  background: none;
+  border-style: none;
   width: 0.7vw;
   min-width: 6px;
 }
 
 ::-webkit-scrollbar-thumb {
-  border: 1px solid black;
-  background-color: rgb(255 201 184 / 31%);
+  border: 1px solid var(--darkText);
+  background-color: var(--salmon);
 }
 
 .imageViewer::-webkit-scrollbar,
 .imageViewer::-webkit-scrollbar-thumb {
-  border: 1px solid black;
+  border: 1px solid var(--darkText);
 }
 
 .imageViewer::-webkit-scrollbar {
@@ -132,9 +145,9 @@ h1, h2, h3 {
   margin: 0;
   padding: 0;
   object-fit: cover;
-  border: 2px solid black;
+  border: 2px solid var(--darkText);
   box-sizing: border-box;
-  box-shadow: 0 3px 4px #00000090;
+  box-shadow: 0 3px 6px var(--shadow);
 }
 
 .imageContainer:hover .medImage {
@@ -158,11 +171,15 @@ h1, h2, h3 {
   padding-top: 0.25vh;
   padding-bottom: 0.25vh;
   border-radius: 21px;
-  background-color: #7a5e59;
+  background-color: var(--cream);
 
-  border: 2px solid black;
+  border: 2px solid var(--darkText);
   box-sizing: border-box;
-  box-shadow: 0 2px #00000060;
+  box-shadow: 0 2px 3px var(--shadow);
+}
+
+.imageButton:hover {
+  color: var(--salmon);
 }
 
 /* ZOOM */
