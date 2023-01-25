@@ -45,6 +45,7 @@ h1, h2, h3 {
 /* HEADER */
 
 .header {
+  flex: 0;
   width: 98vw;
   height: 60px;
   padding-left: 1vw;
@@ -62,6 +63,21 @@ h1, h2, h3 {
   width: 200px;
   background-color: var(--cream);
   border-radius: 25px;
+}
+
+.login {
+  background-color: var(--cream);
+  font-size: 20px;
+  padding: 4px;
+  border-radius: 40px;
+  width: 60px;
+  justify-content: center;
+  user-select: none;
+}
+
+.login:hover {
+  background-color: var(--leaf);
+  cursor: pointer;
 }
 
 /* FEATURED BUTTONS */
@@ -246,4 +262,61 @@ h1, h2, h3 {
 .prev {
   justify-content: flex-start;
   /* border-radius: 64px 0 0 64px; */
+}
+
+/* AUTH */
+
+.auth {
+  height: 100%;
+  width: 100%;
+}
+
+.loginForm {
+  height: 60%;
+  /* border: 1px solid var(--salmon); */
+  border-radius: 60px;
+  width: 30%;
+  background-color: var(--cream);
+  box-shadow: 0 10px 15px #dd59593d;
+}
+
+.loginInputs, .loginButtons {
+  width: 70%;
+  padding: 1vh;
+  padding-bottom: 0;
+}
+
+.loginInput {
+  border: 1px solid var(--salmon);
+  outline: none;
+  padding: 1vh;
+  padding-bottom: 0.8vh;
+  width: 100%;
+  margin: 1vh;
+  border-radius: 25px;
+  box-sizing: border-box;
+}
+
+.loginInput::placeholder {
+  color: var(--salmon);
+}
+
+.loginButtons {
+  border: 1px solid var(--salmon);
+  border-style: solid none none;
+}
+
+.loginButton {
+  border: none;
+  outline: none;
+  padding: 1vh;
+  width: 45%;
+  /* margin: 1vh; */
+  padding-bottom: 0.8vh;
+  border-radius: 25px;
+  box-sizing: border-box;
+  background-color: var(--salmon);
+  color: var(--cream);
+  font-size: 16px;
+  font-weight: bold;
 }
