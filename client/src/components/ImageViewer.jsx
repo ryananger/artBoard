@@ -16,7 +16,7 @@ const ImageViewer = ({state}) => {
     var scroll = e.target.scrollTop + e.target.clientHeight;
     var height = e.target.scrollHeight;
 
-    if (scroll > height * 0.6 && !fetching) {
+    if (scroll > height * 0.75 && !fetching) {
       var newPageNum = currentPage + 1;
 
       setPage(newPageNum);

@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import '../style.css';
 import ax           from '../util/ax.js';
+import helpers      from '../util/helpers.js';
 import cookieHandle from '../util/cookieHandle.js';
 
 import Header      from './Header.jsx';
@@ -24,7 +25,7 @@ const App = function() {
   };
 
   var getPhotos = function() {
-    ax.searchPhotos(search.query, setImageData);
+    ax.searchPhotos(search.query, 1 + helpers.rand(4), setImageData);
   };
 
   useEffect(getPhotos, []);

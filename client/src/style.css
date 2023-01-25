@@ -1,7 +1,8 @@
 :root {
   --bg: #ffe1d7;
-  --salmon: #ff8575;
+  --salmon: #ff9d90;
   --leaf: #d1e275;
+  --sky: #41aadd;
   --cream: rgb(255, 239, 229);
 
   --lightText: rgb(255, 232, 217);
@@ -182,6 +183,10 @@ h1, h2, h3 {
   color: var(--salmon);
 }
 
+.add:hover {
+  color: var(--sky);
+}
+
 /* ZOOM */
 
 .zoomContainer {
@@ -190,6 +195,7 @@ h1, h2, h3 {
   position: absolute;
   top: 0;
   left: 0;
+  justify-content: center;
 
   background-color: #00000099;
 
@@ -203,4 +209,29 @@ h1, h2, h3 {
 
   border: 2px solid black;
   box-shadow: 0 0 400px 200px #00000080;
+}
+
+.zoomButtonContainer {
+  z-index: 11;
+  padding: 3px;
+  box-sizing: border-box;
+  width: 64px;
+  height: 58px;
+
+  color: var(--cream);
+}
+
+.zoomButton:hover {
+  cursor: pointer;
+  color: var(--leaf);
+}
+
+.next {
+  justify-content: flex-end;
+  /* border-radius: 0 64px 64px 0; */
+}
+
+.prev {
+  justify-content: flex-start;
+  /* border-radius: 64px 0 0 64px; */
 }

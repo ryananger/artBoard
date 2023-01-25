@@ -21,7 +21,7 @@ const Image = ({image, setZoom}) => {
       />
       <div className='imageButtons v'>
         <Heart className='imageButton' size={32}/>
-        <Add   className='imageButton' size={32}/>
+        <Add   className='imageButton add' size={32}/>
       </div>
       <PreLoad image={image}/>
     </div>

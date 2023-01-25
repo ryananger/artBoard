@@ -1,6 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import '../style.css';
-import ax           from '../util/ax.js';
+import ax      from '../util/ax.js';
+import helpers from '../util/helpers.js';
 
 const featured = [
   {title: 'Wildlife', query: 'wildlife animals'},
@@ -19,7 +20,7 @@ const Featured = function({state}) {
   var handleSearch = function(index) {
     var search = featured[index];
 
-    ax.searchPhotos(search.query, setImageData);
+    ax.searchPhotos(search.query, 1 + helpers.rand(4), setImageData);
 
     setSearch(search);
   };

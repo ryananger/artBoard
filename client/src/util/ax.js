@@ -3,14 +3,12 @@ import axios from 'axios';
 var urlBase = process.env.URL;
 
 var ax = {
-  searchPhotos: function(query, setImageData) {
-    axios.get(urlBase + 'search', {params: {search: query}})
+  searchPhotos: function(query, num, setImageData) {
+    axios.get(urlBase + 'search/' + num, {params: {search: query}})
       .then(function(response) {
         var viewer = document.getElementById('viewer');
 
         viewer.scrollTop = 0;
-
-        console.log(response);
 
         setImageData(response.data);
       })
