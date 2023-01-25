@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import ax from '../util/ax.js';
 
+import PreLoad from './PreLoad.jsx';
+
 const Image = ({image, setZoom}) => {
   return (
     <div className='imageContainer v' style={{aspectRatio: image.width/image.height}}>
@@ -13,6 +15,8 @@ const Image = ({image, setZoom}) => {
         }}
         onClick={()=>{setZoom(image)}}
       />
+
+      <PreLoad image={image}/>
     </div>
   );
 };
