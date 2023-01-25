@@ -20,6 +20,7 @@ var controller = {
   getCollection: function(id, res) {
     axios.get(`${pexelsBase}collections/${id}?type=photos&per_page=50`, pexelsHeader)
       .then(function(response) {
+
         res.json(response.data.media);
       })
   }

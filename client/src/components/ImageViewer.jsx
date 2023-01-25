@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import ax from '../util/ax.js';
 
-import Image from './Image.jsx';
+import Image     from './Image.jsx';
 import ZoomImage from './ZoomImage.jsx';
 
 const ImageViewer = ({state}) => {

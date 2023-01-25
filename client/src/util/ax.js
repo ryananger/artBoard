@@ -10,9 +10,9 @@ var ax = {
 
         viewer.scrollTop = 0;
 
-        setImageData(response.data);
+        console.log(response);
 
-        console.log(response.data)
+        setImageData(response.data);
       })
   },
   getPage: function(query, num, state, setFetching) {

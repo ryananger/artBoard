@@ -3,8 +3,8 @@ import '../style.css';
 import ax           from '../util/ax.js';
 import cookieHandle from '../util/cookieHandle.js';
 
-import Header from './Header.jsx';
-import Featured from './Featured.jsx';
+import Header      from './Header.jsx';
+import Featured    from './Featured.jsx';
 import ImageViewer from './ImageViewer.jsx';
 
 var defaultQuery = {
