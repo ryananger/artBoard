@@ -1,0 +1,12 @@
+/* PROFILE */
+
+.profile {
+  width: 100%;
+  height: 100%;
+}
+
+.profileBody {
+  padding: 2vh;
+  background-color: var(--cream);
+  border-radius: 40px;
+}

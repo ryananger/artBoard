@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import '../style.css';
+import '../styles/login.css';
 import ax           from '../util/ax.js';
 import auth         from '../util/auth.js';
 import helpers      from '../util/helpers.js';
@@ -29,12 +29,17 @@ const Login = function({state}) {
             Welcome to artBoard!
           </h2>
         </div>
+
         <div className='formBody v'>
           <div className='loginInputs v'>
             <input className='loginInput' name='email' autoComplete='off' type='text' placeholder='Email address!'/>
             <input className='loginInput' name='pass'  autoComplete='off' type='password' placeholder='Password!'/>
           </div>
-          {renderSubmit()}
+
+          <div className='loginButtons h'>
+            <input className='loginButton' type='submit' value={!signUp ? 'sign in' : 'sign up'}/>
+          </div>
+
           <div className='signUpText' onClick={()=>{setSignUp(!signUp)}}>
             {!signUp && 'Create an account?'}
             {signUp  && 'Sign in?'}
@@ -46,23 +51,6 @@ const Login = function({state}) {
         </div>
       </form>
     )
-  };
-
-  var renderSubmit = function() {
-    if (!signUp) {
-      return (
-        <div className='loginButtons h'>
-          <input className='loginButton' type='submit' value='sign in'/>
-        </div>
-      )
-    } else {
-      return (
-        <div className='loginButtons h'>
-          <input className='loginButton' type='submit' value='sign up'/>
-        </div>
-      )
-    }
-
   };
 
   return (

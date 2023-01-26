@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import ax from '../util/ax.js';
+import ax from '../../util/ax.js';
 
 const PreLoad = ({image}) => {
   return (

@@ -1,0 +1,31 @@
+/* FEATURED BUTTONS */
+
+.featuredButtons {
+  margin: 0.5vh;
+  width: 70vw;
+  height: 4vh;
+  max-width: 840px;
+}
+
+.featuredButton {
+  padding: 0.5vh;
+  padding-bottom: 0.125vh;
+  padding-top: 0.125vh;
+  margin: 0;
+  margin-left: 0.125vh;
+  margin-right: 0.125vh;
+  border: 1px solid var(--darkSalmon);
+  border-radius: 25px;
+  background-color: var(--salmon);
+
+  width: 100px;
+  text-align: center;
+  user-select: none;
+  font-weight: 600;
+}
+
+.featuredButton:hover {
+  background-color: var(--leaf);
+  color: var(--darkText);
+  cursor: pointer;
+}

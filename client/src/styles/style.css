@@ -1,0 +1,54 @@
+:root {
+  --bg: #ffd3c4;
+  --salmon: #ff9d90;
+  --darkSalmon: #a0483c;
+  --leaf: #d1e275;
+  --sky: #41aadd;
+  --cream: rgb(255, 239, 229);
+
+  --lightText: rgb(255, 232, 217);
+  --darkText: #3d1a15;
+
+  --shadow: #39161096;
+}
+
+html, body, #root, .app {
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  margin: 0;
+  height: 100%;
+  width: 100%;
+  font-family: Jost;
+
+  background-color: var(--bg);
+  color: var(--darkText);
+}
+
+h1, h2, h3 {
+  margin: 0;
+}
+
+.v {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.h {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* --- */
+
+.backButton {
+  user-select: none;
+  padding: 1vh;
+  box-sizing: border-box;
+  min-height: 48px;
+  color: var(--salmon);
+}

@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import ax from '../util/ax.js';
+import '../../styles/imageViewer.css';
+import ax      from '../../util/ax.js';
+import helpers from '../../util/helpers.js';
 
 import Image     from './Image.jsx';
 import ZoomImage from './ZoomImage.jsx';
@@ -8,7 +10,7 @@ const ImageViewer = ({state}) => {
   const [currentPage, setPage]  = useState(1);
   const [fetching, setFetching] = useState(false);
 
-  const [zoom, setZoom] = useState(null);
+  const [zoom, setZoom]     = useState(null);
   const [fullZoom, setFull] = useState(false);
 
   const imageData = state.imageData;
@@ -44,18 +46,27 @@ const ImageViewer = ({state}) => {
     style.overflow = zoom === null ? 'overlay' : 'hidden';
     style.position = fullZoom ? 'unset' : 'relative';
 
-    if (zoom !== null) {
-      style.overflow = 'hidden';
-    } else {
-      style.overflow = 'overlay';
-    }
-
     return style;
   };
 
+  var getPhotos = function() {
+    if (state.view === 'home') {
+      ax.searchPhotos(search.query, 1 + helpers.rand(4), state.setImageData);
+    }
+  };
+
+  var zoomState = {
+    index: zoom,
+    setZoom: setZoom,
+    full: fullZoom,
+    setFull: setFull
+  };
+
+  useEffect(getPhotos, []);
+
   return (
     <div id='viewer' className='imageViewer h' onScroll={handleScroll} style={modalStyle()}>
-      {zoom !== null && <ZoomImage imageData={imageData} setZoom={setZoom} index={zoom} setFull={setFull} full={fullZoom}/>}
+      {zoom !== null && <ZoomImage imageData={imageData} zoom={zoomState}/>}
       {renderImages()}
     </div>
   );

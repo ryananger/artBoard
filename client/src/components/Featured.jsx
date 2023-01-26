@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from 'react';
-import '../style.css';
+import '../styles/featured.css';
 import ax      from '../util/ax.js';
 import helpers from '../util/helpers.js';
 
@@ -20,7 +20,7 @@ const Featured = function({state}) {
   var handleSearch = function(index) {
     var search = featured[index];
 
-    ax.searchPhotos(search.query, 1 + helpers.rand(4), setImageData);
+    ax.searchPhotos(search.query, 1 + helpers.rand(2), setImageData);
 
     setSearch(search);
   };

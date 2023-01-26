@@ -3,9 +3,10 @@ import {AiFillHeart as Heart} from 'react-icons/ai';
 import {IoMdList as List} from 'react-icons/io';
 import {HiPencil as Draw} from 'react-icons/hi';
 import {RiLogoutBoxRFill as LogOut}   from 'react-icons/ri';
+import '../../styles/navbar.css';
 
-import ax from '../util/ax.js';
-import auth from '../util/auth.js';
+import ax from '../../util/ax.js';
+import auth from '../../util/auth.js';
 
 const NavBar = ({state}) => {
   var handleLogout = function() {

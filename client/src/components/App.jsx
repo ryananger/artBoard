@@ -1,14 +1,14 @@
 import React, {useEffect, useState} from 'react';
-import '../style.css';
-import ax           from '../util/ax.js';
-import helpers      from '../util/helpers.js';
-import cookieParse  from '../util/cookieHandle.js';
+import '../styles/style.css';
+import ax          from '../util/ax.js';
+import helpers     from '../util/helpers.js';
+import cookieParse from '../util/cookieHandle.js';
 
 import Login       from './Login.jsx';
 import Profile     from './Profile.jsx';
-import Header      from './Header.jsx';
+import Header      from './header/Header.jsx';
 import Featured    from './Featured.jsx';
-import ImageViewer from './ImageViewer.jsx';
+import ImageViewer from './imageView/ImageViewer.jsx';
 
 var defaultQuery = {
   title: 'Drawing',
@@ -34,12 +34,6 @@ const App = function() {
     setUser:      setUser
   };
 
-  var getPhotos = function() {
-    if (view === 'home') {
-      ax.searchPhotos(search.query, 1 + helpers.rand(4), setImageData);
-    }
-  };
-
   var renderView = function() {
     switch (view) {
       case 'auth':
@@ -55,8 +49,6 @@ const App = function() {
         return <Profile state={state}/>;
     }
   }
-
-  useEffect(getPhotos, []);
 
   return (
     <div id='app' className='app v'>

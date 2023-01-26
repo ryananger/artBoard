@@ -1,23 +1,35 @@
 import React, { useState, useEffect } from 'react';
-import {
-  BsArrowRightCircleFill as Next,
-  BsArrowLeftCircleFill  as Prev,
-  BsFullscreen           as Full
-} from 'react-icons/bs';
+import { BsArrowRightCircleFill as Next,
+         BsArrowLeftCircleFill  as Prev,
+         BsFullscreen           as Full } from 'react-icons/bs';
 
-import ax from '../util/ax.js';
+import '../../styles/zoom.css';
+import ax from '../../util/ax.js';
+
 import ImageButtons from './ImageButtons.jsx';
 
-const ZoomImage = ({imageData, setZoom, index, setFull, full}) => {
-  var image = imageData[index];
+const ZoomImage = ({imageData, zoom}) => {
+  const index   = zoom.index;
+  const setZoom = zoom.setZoom;
+  const full    = zoom.full;
+  const setFull = zoom.setFull;
+  const image   = imageData[index];
+
+  if (!image) {return};
+
   var viewer = document.getElementById('viewer');
-  var ratio = image.width/image.height;
+  var ratio  = image.width/image.height;
 
   var modalStyle = function() {
     var style = {};
 
     style.position = 'absolute';
     style.top = full ? 0 : viewer.scrollTop;
+
+    if (full) {
+      style.padding = '1.5vh';
+      style.boxSizing = 'border-box';
+    }
 
     return style;
   };

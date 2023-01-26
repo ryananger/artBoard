@@ -1,0 +1,39 @@
+/* IMAGE VIEWER */
+
+.imageViewer {
+  justify-content: space-around;
+  flex-wrap: wrap;
+  width: 80vw;
+  height: 100%;
+  position: relative;
+
+  margin: 2vh;
+  margin-top: 0;
+  padding: 0.5vh;
+  border: 3px solid var(--darkText);
+  border-style: solid none;
+
+  background: radial-gradient(ellipse at bottom, #ff909080, 30%, transparent 70%);
+}
+
+::-webkit-scrollbar {
+  background: none;
+  border-style: none;
+  width: 0.7vw;
+  min-width: 6px;
+}
+
+::-webkit-scrollbar-thumb {
+  border: 1px solid var(--darkText);
+  background-color: var(--salmon);
+}
+
+.imageViewer::-webkit-scrollbar,
+.imageViewer::-webkit-scrollbar-thumb {
+  border: 1px solid var(--darkText);
+}
+
+.imageViewer::-webkit-scrollbar {
+  background: none;
+  border-style: none;
+}

@@ -1,0 +1,40 @@
+/* NAVBAR */
+
+.navButtons {
+  position: absolute;
+  top: 15vh;
+  left: 0;
+  min-height: 120px;
+  width: 42px;
+  margin: 1vh;
+  padding-top: 0.25vh;
+  padding-bottom: 0.25vh;
+  border-radius: 21px;
+  background-color: var(--cream);
+
+  border: 2px solid var(--darkSalmon);
+  box-sizing: border-box;
+  box-shadow: 0 2px 3px var(--shadow);
+}
+
+.navButton {
+  color: var(--salmon);
+  margin-top: 0.5vh;
+  margin-bottom: 0.5vh;
+}
+
+.navButton:hover {
+  cursor: pointer;
+  color: var(--darkText);
+}
+
+.navSpacer {
+  height: 40px;
+  width: 100%;
+}
+
+hr {
+  border: 1px solid var(--salmon);
+  margin-top: 3px;
+  margin-bottom: 3px;
+}

@@ -1,0 +1,62 @@
+/* IMAGE */
+
+.imageContainer {
+  max-width: 30%;
+  max-height: 35%;
+
+  margin: 0;
+  position: relative;
+}
+
+.medImage {
+  width: 90%;
+  max-height: 90%;
+  margin: 0;
+  padding: 0;
+  object-fit: cover;
+  border: 2px solid var(--darkText);
+  box-sizing: border-box;
+  box-shadow: 0 3px 6px var(--shadow);
+}
+
+.medImage:not(:hover) {
+  transition: width 0.25s;
+}
+
+.imageContainer:hover .medImage {
+  cursor: zoom-in;
+  width: 100%;
+  max-height: 100%;
+}
+
+.imageContainer:hover .imageButtons {
+  display: flex;
+}
+
+.imageButtons {
+  display: none;
+  position: absolute;
+  top: 0;
+  right: 0;
+  min-height: 64px;
+  width: 42px;
+  margin: 1vh;
+  padding-top: 0.25vh;
+  padding-bottom: 0.25vh;
+  border-radius: 21px;
+  background-color: var(--cream);
+
+  border: 2px solid var(--darkText);
+  box-sizing: border-box;
+  box-shadow: 0 2px 3px var(--shadow);
+}
+
+.imageButton:hover {
+  cursor: pointer;
+  color: var(--salmon);
+}
+
+.add:hover {
+  cursor: pointer;
+  color: var(--sky);
+}
