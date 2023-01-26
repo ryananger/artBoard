@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
-import ax from '../../util/ax.js';
 
 import st from '../state.js';
+import ax from '../../util/ax.js';
 
 var searchHistory = [];
 

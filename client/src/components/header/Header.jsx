@@ -1,11 +1,12 @@
 import React, {useEffect, useState} from 'react';
+
 import '../../styles/header.css';
 import ax           from '../../util/ax.js';
 import cookieHandle from '../../util/cookieHandle.js';
 
-import st from '../state.js';
+import st        from '../state.js';
 import SearchBar from './SearchBar.jsx';
-import NavBar from './NavBar.jsx';
+import NavBar    from './NavBar.jsx';
 
 const Header = function() {
   var renderButton = function() {

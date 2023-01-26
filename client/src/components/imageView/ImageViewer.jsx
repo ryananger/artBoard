@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
+
 import '../../styles/imageViewer.css';
 import ax      from '../../util/ax.js';
 import helpers from '../../util/helpers.js';
 
-import st from '../state.js';
-
+import st        from '../state.js';
 import Image     from './Image.jsx';
 import ZoomImage from './ZoomImage.jsx';
 
@@ -14,16 +14,13 @@ const ImageViewer = () => {
   const [zoom, setZoom]         = useState(null);
   const [fullZoom, setFull]     = useState(false);
 
-  const imageData = st.imageData;
-  const search    = st.search;
-
   st.zoom     = zoom;
   st.setZoom  = setZoom;
   st.fullZoom = fullZoom;
   st.setFull  = setFull;
 
   var handleScroll = function(e) {
-    if (st.view === 'favorites') {return;}
+    if (st.view !== 'home') {return;}
 
     var scroll = e.target.scrollTop + e.target.clientHeight;
     var height = e.target.scrollHeight;
@@ -34,14 +31,14 @@ const ImageViewer = () => {
       setPage(newPageNum);
       setFetching(true);
 
-      ax.getPage(search.query, newPageNum, setFetching);
+      ax.getPage(st.search.query, newPageNum, setFetching);
     }
   };
 
   var renderImages = function() {
     var images = [];
 
-    imageData.map(function(image, i) {
+    st.imageData.map(function(image, i) {
       images.push(<Image key={i} image={image} index={i}/>);
     })
 
@@ -59,7 +56,7 @@ const ImageViewer = () => {
 
   var getPhotos = function() {
     if (st.view === 'home') {
-      ax.searchPhotos(search.query, 1 + helpers.rand(4));
+      ax.searchPhotos(st.search.query, 1 + helpers.rand(4));
     }
   };
 

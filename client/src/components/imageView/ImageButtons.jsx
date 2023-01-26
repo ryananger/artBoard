@@ -3,8 +3,8 @@ import { AiFillHeart      as Heart,
          AiFillPlusCircle as Add } from 'react-icons/ai';
 import { BsFullscreen     as Full} from 'react-icons/bs';
 
-import ax from '../../util/ax.js';
 import st from '../state.js';
+import ax from '../../util/ax.js';
 
 const ImageButtons = ({image, inZoom}) => {
   const fullZoom = st.fullZoom;

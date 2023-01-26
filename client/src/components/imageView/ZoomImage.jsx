@@ -5,7 +5,8 @@ import { BsArrowRightCircleFill as Next,
 
 import '../../styles/zoom.css';
 import ax from '../../util/ax.js';
-import st from '../state.js';
+
+import st           from '../state.js';
 import ImageButtons from './ImageButtons.jsx';
 
 const ZoomImage = ({imageData, index}) => {

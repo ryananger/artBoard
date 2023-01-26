@@ -2,10 +2,10 @@ import React, { useState, useEffect } from 'react';
 import { AiFillHeart      as Heart,
          AiFillPlusCircle as Add } from 'react-icons/ai';
 
-import ax from '../../util/ax.js';
 import '../../styles/image.css';
+import ax from '../../util/ax.js';
 
-import st from '../state.js';
+import st           from '../state.js';
 import PreLoad      from './PreLoad.jsx';
 import ImageButtons from './ImageButtons.jsx';
 
