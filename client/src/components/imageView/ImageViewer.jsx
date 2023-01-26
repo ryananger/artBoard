@@ -64,7 +64,7 @@ const ImageViewer = () => {
 
   return (
     <div id='viewer' className='imageViewer h' onScroll={handleScroll} style={modalStyle()}>
-      {zoom !== null && <ZoomImage imageData={imageData} index={zoom}/>}
+      {zoom !== null && <ZoomImage index={zoom}/>}
       {renderImages()}
     </div>
   );

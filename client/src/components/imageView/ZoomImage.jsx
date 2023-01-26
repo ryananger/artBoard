@@ -9,10 +9,11 @@ import ax from '../../util/ax.js';
 import st           from '../state.js';
 import ImageButtons from './ImageButtons.jsx';
 
-const ZoomImage = ({imageData, index}) => {
-  const setZoom  = st.setZoom;
-  const fullZoom = st.fullZoom;
-  const image    = imageData[index];
+const ZoomImage = ({index}) => {
+  const setZoom   = st.setZoom;
+  const fullZoom  = st.fullZoom;
+  const imageData = st.imageData;
+  const image     = imageData[index];
 
   if (!image) {return};
 
