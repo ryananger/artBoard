@@ -21,7 +21,7 @@ const App = function() {
   const [imageData, setImageData] = useState([]);
   const [search, setSearch] = useState(defaultQuery);
   const [view, setView] = useState('home');
-  const [user, setUser] = useState(cookie.user || null);
+  const [user, setUser] = useState(null);
 
   const state = {
     imageData:    imageData,
@@ -48,7 +48,13 @@ const App = function() {
       case 'profile':
         return <Profile state={state}/>;
     }
-  }
+  };
+
+  useEffect(function() {
+    if (cookie.user) {
+      ax.getUser(cookie.user, state);
+    }
+  }, []);
 
   return (
     <div id='app' className='app v'>

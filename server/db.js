@@ -8,25 +8,30 @@ mongoose.connect(url, options, function(a) {
 });
 
 const userSchema = new mongoose.Schema({
+  uid:          String,
   username:     String,
   firstName:    String,
   lastName:     String,
-  bio:          {type: String, maxLength: 140},
+  pic:          String,
+  favorites:   [String],
   boards:      [String],
-  uploads:     [String]
+  uploads:     [String],
+
+  bio:         {type: String, maxLength: 140}
 });
 
 const boardSchema = new mongoose.Schema({
   ownerId:      String,
   boardname:    String,
-  photos:      [String]
+  photos:      [String],
+  config:       Object
 });
 
-const User = new mongoose.model('User', userSchema);
+const User  = new mongoose.model('User', userSchema);
 const Board = new mongoose.model('Board', boardSchema);
 
 var schemas = {
-  User: User,
+  User:  User,
   Board: Board
 };
 

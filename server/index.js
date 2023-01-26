@@ -4,7 +4,6 @@ const cors = require('cors');
 const path = require('path');
 const controller = require('./controller.js');
 const app = express();
-const {User, Board} = require('./db.js');
 
 app.use(cors());
 app.use(express.json());
@@ -24,13 +23,11 @@ app.get('/collection/:id', function(req, res) {
 })
 
 app.post('/users', function(req, res) {
-  User.create(req.body)
-    .then(function(response) {
-      console.log(response);
+  controller.createUser(req, res);
+});
 
-      res.status(201);
-      res.send('User created.');
-    })
+app.get('/users/:uid', function(req, res) {
+  controller.getUser(req.params.uid, res);
 });
 
 const PORT = 4001;

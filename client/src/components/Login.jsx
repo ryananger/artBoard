@@ -15,7 +15,13 @@ const Login = function({state}) {
     var form = e.target;
 
     if (signUp) {
-      auth.signUp(form.email.value, form.pass.value, state);
+      var user = {
+        username: form.username.value,
+        email: form.email.value,
+        password: form.pass.value
+      };
+
+      auth.signUp(user, state);
     } else {
       auth.signIn(form.email.value, form.pass.value, state);
     }
@@ -32,8 +38,9 @@ const Login = function({state}) {
 
         <div className='formBody v'>
           <div className='loginInputs v'>
-            <input className='loginInput' name='email' autoComplete='off' type='text' placeholder='Email address!'/>
-            <input className='loginInput' name='pass'  autoComplete='off' type='password' placeholder='Password!'/>
+            {signUp && <input className='loginInput' name='username' autoComplete='off' type='text'     placeholder='Username?'/>}
+            <input className='loginInput' name='email'    autoComplete='off' type='text'     placeholder='Email address!'/>
+            <input className='loginInput' name='pass'     autoComplete='off' type='password' placeholder='Password!'/>
           </div>
 
           <div className='loginButtons h'>

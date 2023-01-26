@@ -30,6 +30,28 @@ var ax = {
       .then(function(response) {
         setImageData(response.data);
       })
+  },
+  createUser: function(user, state) {
+    axios.post(urlBase + 'users', user)
+      .then(function(response) {
+        console.log(response);
+
+        document.cookie = `user=${user.uid}`;
+
+        state.setUser(response.data);
+        state.setView('home');
+      })
+  },
+  getUser: function(uid, state) {
+    axios.get(urlBase + 'users/' + uid)
+      .then(function(response) {
+        console.log(response);
+
+        document.cookie = `user=${uid}`;
+
+        state.setUser(response.data);
+        state.setView('home');
+      })
   }
 };
 

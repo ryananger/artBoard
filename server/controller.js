@@ -1,4 +1,5 @@
-const axios = require('axios');
+const axios         = require('axios');
+const {User, Board} = require('./db.js');
 
 var pexelsBase = 'http://api.pexels.com/v1/';
 var pexelsHeader = {headers: {'Authorization': process.env.PEXELS_API}};
@@ -23,8 +24,47 @@ var controller = {
 
         res.json(response.data.media);
       })
+  },
+
+  createUser: function(req, res) {
+    User.create(req.body)
+      .then(function(response) {
+        var user = parseUser(response);
+
+        console.log('Sending user:', user);
+
+        res.status(201);
+        res.json(user);
+      })
+  },
+  getUser: function(uid, res) {
+    User.findOne({uid: uid})
+      .then(function(response) {
+        var user = parseUser(response);
+
+        console.log('Sending user:', user);
+
+        res.status(200);
+        res.json(user);
+      })
   }
 };
+
+var parseUser = function(doc) {
+  var user = {
+    uid:       doc.uid,
+    username:  doc.username,
+
+    firstName: doc.firstName || null,
+    lastName:  doc.lastName  || null,
+
+    favorites: doc.favorites,
+    boards:    doc.boards,
+    uploads:   doc.uploads
+  };
+
+  return user;
+}
 
 module.exports = controller;
 

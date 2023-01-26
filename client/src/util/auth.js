@@ -4,6 +4,8 @@ import { getAuth,
          signInWithEmailAndPassword,
          signOut } from "firebase/auth";
 
+import ax from './ax.js';
+
 const firebaseConfig = {
   apiKey: process.env.FIREBASE_API,
   authDomain: "ryscott-artboard.firebaseapp.com",
@@ -14,18 +16,15 @@ const firebaseConfig = {
   measurementId: "G-LVM5W68H2Q"
 };
 
-const app = initializeApp(firebaseConfig);
+const app  = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
-var signUp = function(email, password, state) {
-  createUserWithEmailAndPassword(auth, email, password)
+var signUp = function(user, state) {
+  createUserWithEmailAndPassword(auth, user.email, user.password)
     .then((userCredential) => {
-      var user = userCredential.user;
+      user.uid = userCredential.user.uid;
 
-      // TODO: create user in DB, setUser to that
-
-      state.setUser(user);
-      state.setView('home');
+      ax.createUser(user, state);
     })
     .catch((error) => {
       console.log(error);
@@ -37,12 +36,7 @@ var signIn = function(email, password, state) {
     .then((userCredential) => {
       var user = userCredential.user;
 
-      // TODO: get user from DB, setUser to that
-
-      document.cookie = `user=${user.uid}`;
-
-      state.setUser(user);
-      state.setView('home');
+      ax.getUser(user.uid, state);
     })
     .catch((error) => {
       console.log(error);
@@ -53,7 +47,7 @@ var logOut = function() {
   signOut(auth).then(() => {
     console.log('Firebase signOut successful.')
   }).catch((error) => {
-    // An error happened.
+      console.log(error);
   });
 };
 
