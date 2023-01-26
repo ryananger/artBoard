@@ -39,6 +39,7 @@ const App = function() {
       case 'auth':
         return <Login state={state}/>;
       case 'home':
+      case 'favorites':
         return (
           <>
           <Featured    state={state}/>

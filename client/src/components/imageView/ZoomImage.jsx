@@ -8,7 +8,7 @@ import ax from '../../util/ax.js';
 
 import ImageButtons from './ImageButtons.jsx';
 
-const ZoomImage = ({imageData, zoom}) => {
+const ZoomImage = ({imageData, zoom, user, setUser}) => {
   const index   = zoom.index;
   const setZoom = zoom.setZoom;
   const full    = zoom.full;
@@ -50,7 +50,7 @@ const ZoomImage = ({imageData, zoom}) => {
           onClick={()=>{setZoom(null)}}
         />
         <div className='navSpacer' style={{position: 'absolute'}}/>
-        <ImageButtons inZoom={true} full={full} setFull={setFull}/>
+        <ImageButtons image={image} setUser={setUser} uid={user ? user.uid : null} inZoom={true} full={full} setFull={setFull}/>
       </div>
       <div className='zoomButtonContainer next h'>
         {index < imageData.length - 1 && <Next className='zoomButton' size={48} onClick={()=>{setZoom(index + 1)}}/>}

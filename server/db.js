@@ -13,7 +13,7 @@ const userSchema = new mongoose.Schema({
   firstName:    String,
   lastName:     String,
   pic:          String,
-  favorites:   [String],
+  favorites:   [Object],
   boards:      [String],
   uploads:     [String],
 
@@ -23,7 +23,7 @@ const userSchema = new mongoose.Schema({
 const boardSchema = new mongoose.Schema({
   ownerId:      String,
   boardname:    String,
-  photos:      [String],
+  photos:      [Object],
   config:       Object
 });
 

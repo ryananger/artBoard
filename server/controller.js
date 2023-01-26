@@ -47,6 +47,19 @@ var controller = {
         res.status(200);
         res.json(user);
       })
+  },
+  addFavorite: function(req, res) {
+    var uid   = req.body.uid;
+    var image = req.body.image;
+
+    var filter = {uid: uid};
+    var update = {'$push': {favorites: image}};
+    var option = {new: true};
+
+    User.findOneAndUpdate(filter, update, option)
+      .then(function(response) {
+        res.json(response);
+      })
   }
 };
 

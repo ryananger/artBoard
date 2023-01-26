@@ -16,9 +16,15 @@ const NavBar = ({state}) => {
     state.setUser(null);
   };
 
+  var viewFavorites = function() {
+    state.setView('favorites');
+    state.setZoom(null);
+    state.setImageData(state.user.favorites);
+  };
+
   return (
     <div className='navButtons v'>
-      <Heart  className='navButton' size={32}/>
+      <Heart  className='navButton' size={32} onClick={viewFavorites}/>
       <List   className='navButton' size={32}/>
       <Draw   className='navButton' size={32}/>
       <div    className='navSpacer'><hr/><hr/></div>

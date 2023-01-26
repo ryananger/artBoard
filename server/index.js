@@ -30,6 +30,10 @@ app.get('/users/:uid', function(req, res) {
   controller.getUser(req.params.uid, res);
 });
 
+app.post('/favorite', function(req, res) {
+  controller.addFavorite(req, res);
+})
+
 const PORT = 4001;
 
 app.listen(PORT);

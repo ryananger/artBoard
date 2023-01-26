@@ -8,7 +8,7 @@ import '../../styles/image.css';
 import PreLoad      from './PreLoad.jsx';
 import ImageButtons from './ImageButtons.jsx';
 
-const Image = ({image, setZoom, index}) => {
+const Image = ({image, user, setUser, setZoom, index}) => {
   const ratio = {aspectRatio: image.width/image.height};
   const style = {
     ...ratio,
@@ -23,7 +23,7 @@ const Image = ({image, setZoom, index}) => {
         style={style}
         onClick={()=>{setZoom(index)}}
       />
-      <ImageButtons />
+      <ImageButtons image={image} setUser={setUser} uid={user ? user.uid : null}/>
       <PreLoad image={image}/>
     </div>
   );

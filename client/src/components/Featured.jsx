@@ -20,6 +20,7 @@ const Featured = function({state}) {
   var handleSearch = function(index) {
     var search = featured[index];
 
+    state.setView('home');
     ax.searchPhotos(search.query, 1 + helpers.rand(2), setImageData);
 
     setSearch(search);

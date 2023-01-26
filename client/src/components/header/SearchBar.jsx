@@ -15,6 +15,8 @@ const SearchBar = function({state}) {
       query: e.target.input.value
     };
 
+    state.setView('home');
+
     ax.searchPhotos(search.query, 1, setImageData);
 
     searchHistory.push(search);

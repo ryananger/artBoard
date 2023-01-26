@@ -52,6 +52,22 @@ var ax = {
         state.setUser(response.data);
         state.setView('home');
       })
+  },
+
+  addFavorite: function(uid, setUser, image) {
+    axios.post(urlBase + 'favorite', {uid: uid, image: image})
+      .then(function(response) {
+        console.log(response);
+
+        setUser(response.data);
+      })
+  },
+  addBoard: function() {
+
+  },
+
+  updateProfile: function() {
+
   }
 };
 

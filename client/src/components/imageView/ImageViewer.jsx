@@ -13,10 +13,14 @@ const ImageViewer = ({state}) => {
   const [zoom, setZoom]     = useState(null);
   const [fullZoom, setFull] = useState(false);
 
+  state.setZoom = setZoom;
+
   const imageData = state.imageData;
   const search    = state.search;
 
   var handleScroll = function(e) {
+    if (state.view === 'favorites') {return;}
+
     var scroll = e.target.scrollTop + e.target.clientHeight;
     var height = e.target.scrollHeight;
 
@@ -34,7 +38,7 @@ const ImageViewer = ({state}) => {
     var images = [];
 
     imageData.map(function(image, i) {
-      images.push(<Image key={i} image={image} setZoom={setZoom} index={i}/>);
+      images.push(<Image key={i} image={image} user={state.user} setUser={state.setUser} setZoom={setZoom} index={i}/>);
     })
 
     return images;
@@ -66,7 +70,7 @@ const ImageViewer = ({state}) => {
 
   return (
     <div id='viewer' className='imageViewer h' onScroll={handleScroll} style={modalStyle()}>
-      {zoom !== null && <ZoomImage imageData={imageData} zoom={zoomState}/>}
+      {zoom !== null && <ZoomImage imageData={imageData} zoom={zoomState} user={state.user} setUser={state.setUser}/>}
       {renderImages()}
     </div>
   );
