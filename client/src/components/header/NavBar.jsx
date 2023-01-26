@@ -7,19 +7,20 @@ import '../../styles/navbar.css';
 
 import ax from '../../util/ax.js';
 import auth from '../../util/auth.js';
+import st from '../state.js';
 
-const NavBar = ({state}) => {
+const NavBar = () => {
   var handleLogout = function() {
     document.cookie = 'user=;';
     auth.logOut();
-    state.setView('home');
-    state.setUser(null);
+    st.setView('home');
+    st.setUser(null);
   };
 
   var viewFavorites = function() {
-    state.setView('favorites');
-    state.setZoom(null);
-    state.setImageData(state.user.favorites);
+    st.setView('favorites');
+    st.setZoom(null);
+    st.setImageData(st.user.favorites);
   };
 
   return (

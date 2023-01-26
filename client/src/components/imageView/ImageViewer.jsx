@@ -3,23 +3,27 @@ import '../../styles/imageViewer.css';
 import ax      from '../../util/ax.js';
 import helpers from '../../util/helpers.js';
 
+import st from '../state.js';
+
 import Image     from './Image.jsx';
 import ZoomImage from './ZoomImage.jsx';
 
-const ImageViewer = ({state}) => {
+const ImageViewer = () => {
   const [currentPage, setPage]  = useState(1);
   const [fetching, setFetching] = useState(false);
+  const [zoom, setZoom]         = useState(null);
+  const [fullZoom, setFull]     = useState(false);
 
-  const [zoom, setZoom]     = useState(null);
-  const [fullZoom, setFull] = useState(false);
+  const imageData = st.imageData;
+  const search    = st.search;
 
-  state.setZoom = setZoom;
-
-  const imageData = state.imageData;
-  const search    = state.search;
+  st.zoom     = zoom;
+  st.setZoom  = setZoom;
+  st.fullZoom = fullZoom;
+  st.setFull  = setFull;
 
   var handleScroll = function(e) {
-    if (state.view === 'favorites') {return;}
+    if (st.view === 'favorites') {return;}
 
     var scroll = e.target.scrollTop + e.target.clientHeight;
     var height = e.target.scrollHeight;
@@ -30,7 +34,7 @@ const ImageViewer = ({state}) => {
       setPage(newPageNum);
       setFetching(true);
 
-      ax.getPage(search.query, newPageNum, state, setFetching);
+      ax.getPage(search.query, newPageNum, setFetching);
     }
   };
 
@@ -38,7 +42,7 @@ const ImageViewer = ({state}) => {
     var images = [];
 
     imageData.map(function(image, i) {
-      images.push(<Image key={i} image={image} user={state.user} setUser={state.setUser} setZoom={setZoom} index={i}/>);
+      images.push(<Image key={i} image={image} index={i}/>);
     })
 
     return images;
@@ -54,23 +58,16 @@ const ImageViewer = ({state}) => {
   };
 
   var getPhotos = function() {
-    if (state.view === 'home') {
-      ax.searchPhotos(search.query, 1 + helpers.rand(4), state.setImageData);
+    if (st.view === 'home') {
+      ax.searchPhotos(search.query, 1 + helpers.rand(4));
     }
-  };
-
-  var zoomState = {
-    index: zoom,
-    setZoom: setZoom,
-    full: fullZoom,
-    setFull: setFull
   };
 
   useEffect(getPhotos, []);
 
   return (
     <div id='viewer' className='imageViewer h' onScroll={handleScroll} style={modalStyle()}>
-      {zoom !== null && <ZoomImage imageData={imageData} zoom={zoomState} user={state.user} setUser={state.setUser}/>}
+      {zoom !== null && <ZoomImage imageData={imageData} index={zoom}/>}
       {renderImages()}
     </div>
   );

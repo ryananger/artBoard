@@ -1,11 +1,12 @@
 import React, {useEffect, useState} from 'react';
 import ax from '../../util/ax.js';
 
+import st from '../state.js';
+
 var searchHistory = [];
 
-const SearchBar = function({state}) {
-  const setImageData = state.setImageData;
-  const setSearch    = state.setSearch;
+const SearchBar = function() {
+  const setSearch    = st.setSearch;
 
   var handleSearch = function(e) {
     e.preventDefault();
@@ -15,12 +16,10 @@ const SearchBar = function({state}) {
       query: e.target.input.value
     };
 
-    state.setView('home');
-
-    ax.searchPhotos(search.query, 1, setImageData);
-
+    st.setView('home');
+    st.setSearch(search);
     searchHistory.push(search);
-    setSearch(search);
+    ax.searchPhotos(search.query, 1);
   };
 
   return (

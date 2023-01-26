@@ -4,7 +4,9 @@ import ax           from '../util/ax.js';
 import helpers      from '../util/helpers.js';
 import cookieHandle from '../util/cookieHandle.js';
 
-const Profile = function({state}) {
+import st from './state.js';
+
+const Profile = function() {
 
   return (
     <div className='profile v'>
@@ -13,7 +15,7 @@ const Profile = function({state}) {
         There is nothing here yet. Sorry!
         <br/>
         <br/>
-        <div className='backButton' onClick={()=>{state.setView('home')}}>
+        <div className='backButton' onClick={()=>{st.setView('home')}}>
           back
         </div>
       </div>

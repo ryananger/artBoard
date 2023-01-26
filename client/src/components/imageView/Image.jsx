@@ -5,10 +5,11 @@ import { AiFillHeart      as Heart,
 import ax from '../../util/ax.js';
 import '../../styles/image.css';
 
+import st from '../state.js';
 import PreLoad      from './PreLoad.jsx';
 import ImageButtons from './ImageButtons.jsx';
 
-const Image = ({image, user, setUser, setZoom, index}) => {
+const Image = ({image, index}) => {
   const ratio = {aspectRatio: image.width/image.height};
   const style = {
     ...ratio,
@@ -21,9 +22,9 @@ const Image = ({image, user, setUser, setZoom, index}) => {
         src={image.src.medium}
         className='medImage'
         style={style}
-        onClick={()=>{setZoom(index)}}
+        onClick={()=>{st.setZoom(index)}}
       />
-      <ImageButtons image={image} setUser={setUser} uid={user ? user.uid : null}/>
+      <ImageButtons image={image}/>
       <PreLoad image={image}/>
     </div>
   );

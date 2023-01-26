@@ -1,65 +1,64 @@
 import axios from 'axios';
 
+import st from '../components/state.js';
+
 var urlBase = process.env.URL;
 
 var ax = {
-  searchPhotos: function(query, num, setImageData) {
+  searchPhotos: function(query, num) {
     axios.get(urlBase + 'search/' + num, {params: {search: query}})
       .then(function(response) {
         var viewer = document.getElementById('viewer');
 
         viewer.scrollTop = 0;
 
-        setImageData(response.data);
+        st.setImageData(response.data);
       })
   },
-  getPage: function(query, num, state, setFetching) {
-    var imageData = state.imageData;
-    var setImageData = state.setImageData;
-
+  getPage: function(query, num, setFetching) {
     axios.get(urlBase + 'search/' + num, {params: {search: query}})
       .then(function(response) {
-        var newData = imageData.concat(response.data);
+        var newData = st.imageData.concat(response.data);
 
         setFetching(false);
-        setImageData(newData);
+        st.setImageData(newData);
       })
   },
   getCollection: function(id, setImageData) {
     axios.get(urlBase + 'collection/' + id)
       .then(function(response) {
-        setImageData(response.data);
+        st.setImageData(response.data);
       })
   },
-  createUser: function(user, state) {
+  createUser: function(user) {
     axios.post(urlBase + 'users', user)
       .then(function(response) {
         console.log(response);
 
         document.cookie = `user=${user.uid}`;
 
-        state.setUser(response.data);
-        state.setView('home');
+        st.setUser(response.data);
+        st.setView('home');
       })
   },
-  getUser: function(uid, state) {
+  getUser: function(uid) {
     axios.get(urlBase + 'users/' + uid)
       .then(function(response) {
         console.log(response);
 
         document.cookie = `user=${uid}`;
 
-        state.setUser(response.data);
-        state.setView('home');
+        st.setUser(response.data);
+        st.setView('home');
       })
   },
 
-  addFavorite: function(uid, setUser, image) {
-    axios.post(urlBase + 'favorite', {uid: uid, image: image})
+  addFavorite: function(image) {
+    axios.post(urlBase + 'favorite', {uid: st.user.uid, image: image})
       .then(function(response) {
         console.log(response);
 
-        setUser(response.data);
+        st.setUser(response.data);
       })
   },
   addBoard: function() {

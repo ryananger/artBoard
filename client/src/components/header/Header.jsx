@@ -3,20 +3,21 @@ import '../../styles/header.css';
 import ax           from '../../util/ax.js';
 import cookieHandle from '../../util/cookieHandle.js';
 
+import st from '../state.js';
 import SearchBar from './SearchBar.jsx';
 import NavBar from './NavBar.jsx';
 
-const Header = function({state}) {
+const Header = function() {
   var renderButton = function() {
-    if (state.user) {
+    if (st.user) {
       return (
-        <div className='login h' onClick={()=>{state.setView('profile')}}>
+        <div className='login h' onClick={()=>{st.setView('profile')}}>
           profile
         </div>
       );
     } else {
       return (
-        <div className='login h' onClick={()=>{state.setView('auth')}}>
+        <div className='login h' onClick={()=>{st.setView('auth')}}>
           login
         </div>
       );
@@ -25,11 +26,11 @@ const Header = function({state}) {
 
   return (
     <div className='header h'>
-      {state.user && <NavBar state={state}/>}
+      {st.user && <NavBar />}
       <div className='spacer h'>
         <h1>artBoard</h1>
       </div>
-      <SearchBar state={state}/>
+      <SearchBar />
       <div className='spacer right h'>
         {renderButton()}
       </div>

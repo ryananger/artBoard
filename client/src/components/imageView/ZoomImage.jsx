@@ -5,15 +5,13 @@ import { BsArrowRightCircleFill as Next,
 
 import '../../styles/zoom.css';
 import ax from '../../util/ax.js';
-
+import st from '../state.js';
 import ImageButtons from './ImageButtons.jsx';
 
-const ZoomImage = ({imageData, zoom, user, setUser}) => {
-  const index   = zoom.index;
-  const setZoom = zoom.setZoom;
-  const full    = zoom.full;
-  const setFull = zoom.setFull;
-  const image   = imageData[index];
+const ZoomImage = ({imageData, index}) => {
+  const setZoom  = st.setZoom;
+  const fullZoom = st.fullZoom;
+  const image    = imageData[index];
 
   if (!image) {return};
 
@@ -24,9 +22,9 @@ const ZoomImage = ({imageData, zoom, user, setUser}) => {
     var style = {};
 
     style.position = 'absolute';
-    style.top = full ? 0 : viewer.scrollTop;
+    style.top = fullZoom ? 0 : viewer.scrollTop;
 
-    if (full) {
+    if (fullZoom) {
       style.padding = '1.5vh';
       style.boxSizing = 'border-box';
     }
@@ -50,7 +48,7 @@ const ZoomImage = ({imageData, zoom, user, setUser}) => {
           onClick={()=>{setZoom(null)}}
         />
         <div className='navSpacer' style={{position: 'absolute'}}/>
-        <ImageButtons image={image} setUser={setUser} uid={user ? user.uid : null} inZoom={true} full={full} setFull={setFull}/>
+        <ImageButtons image={image} inZoom={true}/>
       </div>
       <div className='zoomButtonContainer next h'>
         {index < imageData.length - 1 && <Next className='zoomButton' size={48} onClick={()=>{setZoom(index + 1)}}/>}

@@ -77,7 +77,7 @@ var parseUser = function(doc) {
   };
 
   return user;
-}
+};
 
 module.exports = controller;
 

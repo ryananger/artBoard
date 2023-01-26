@@ -4,16 +4,22 @@ import { AiFillHeart      as Heart,
 import { BsFullscreen     as Full} from 'react-icons/bs';
 
 import ax from '../../util/ax.js';
+import st from '../state.js';
 
-const ImageButtons = ({image, uid, setUser, inZoom, full, setFull}) => {
-  const buttonStyle = full ? {top: '48px', right: '1.5vh'} : {top: 0};
+const ImageButtons = ({image, inZoom}) => {
+  const fullZoom = st.fullZoom;
+  const setFull  = st.setFull;
 
-  var toggleFull  = ()=>{setFull(!full)};
+  const buttonStyle = fullZoom ? {top: '48px', right: '1.5vh'} : {top: 0};
+
+  var toggleFull = function() {
+    setFull(!fullZoom);
+  };
 
   var addFav = function() {
-    if (!uid) {return;}
+    if (!st.user) {return;}
 
-    ax.addFavorite(uid, setUser, image);
+    ax.addFavorite(image);
   };
 
   return (

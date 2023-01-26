@@ -4,6 +4,7 @@ import ax          from '../util/ax.js';
 import helpers     from '../util/helpers.js';
 import cookieParse from '../util/cookieHandle.js';
 
+import st          from './state.js';
 import Login       from './Login.jsx';
 import Profile     from './Profile.jsx';
 import Header      from './header/Header.jsx';
@@ -19,47 +20,45 @@ var cookie = cookieParse();
 
 const App = function() {
   const [imageData, setImageData] = useState([]);
-  const [search, setSearch] = useState(defaultQuery);
-  const [view, setView] = useState('home');
-  const [user, setUser] = useState(null);
+  const [search, setSearch]       = useState(defaultQuery);
+  const [view, setView]           = useState('home');
+  const [user, setUser]           = useState(null);
 
-  const state = {
-    imageData:    imageData,
-    setImageData: setImageData,
-    search:       search,
-    setSearch:    setSearch,
-    view:         view,
-    setView:      setView,
-    user:         user,
-    setUser:      setUser
-  };
+  st.imageData    = imageData;
+  st.setImageData = setImageData;
+  st.search       = search;
+  st.setSearch    = setSearch;
+  st.view         = view;
+  st.setView      = setView;
+  st.user         = user;
+  st.setUser      = setUser;
 
   var renderView = function() {
     switch (view) {
       case 'auth':
-        return <Login state={state}/>;
+        return <Login />;
       case 'home':
       case 'favorites':
         return (
           <>
-          <Featured    state={state}/>
-          <ImageViewer state={state}/>
+          <Featured />
+          <ImageViewer />
           </>
         );
       case 'profile':
-        return <Profile state={state}/>;
+        return <Profile />;
     }
   };
 
   useEffect(function() {
     if (cookie.user) {
-      ax.getUser(cookie.user, state);
+      ax.getUser(cookie.user);
     }
   }, []);
 
   return (
     <div id='app' className='app v'>
-      <Header state={state}/>
+      <Header />
       {renderView()}
     </div>
   )

@@ -19,24 +19,24 @@ const firebaseConfig = {
 const app  = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
-var signUp = function(user, state) {
+var signUp = function(user) {
   createUserWithEmailAndPassword(auth, user.email, user.password)
     .then((userCredential) => {
       user.uid = userCredential.user.uid;
 
-      ax.createUser(user, state);
+      ax.createUser(user);
     })
     .catch((error) => {
       console.log(error);
     });
 };
 
-var signIn = function(email, password, state) {
+var signIn = function(email, password) {
   signInWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       var user = userCredential.user;
 
-      ax.getUser(user.uid, state);
+      ax.getUser(user.uid);
     })
     .catch((error) => {
       console.log(error);
