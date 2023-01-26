@@ -1,5 +1,8 @@
 import { initializeApp } from "firebase/app";
-import { getAuth, createUserWithEmailAndPassword, signInWithEmailAndPassword } from "firebase/auth";
+import { getAuth,
+         createUserWithEmailAndPassword,
+         signInWithEmailAndPassword,
+         signOut } from "firebase/auth";
 
 const firebaseConfig = {
   apiKey: process.env.FIREBASE_API,
@@ -11,7 +14,6 @@ const firebaseConfig = {
   measurementId: "G-LVM5W68H2Q"
 };
 
-// Initialize Firebase
 const app = initializeApp(firebaseConfig);
 const auth = getAuth(app);
 
@@ -19,8 +21,6 @@ var signUp = function(email, password, state) {
   createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       var user = userCredential.user;
-
-      console.log(userCredential);
 
       // TODO: create user in DB, setUser to that
 
@@ -37,8 +37,6 @@ var signIn = function(email, password, state) {
     .then((userCredential) => {
       var user = userCredential.user;
 
-      console.log(userCredential);
-
       // TODO: get user from DB, setUser to that
 
       document.cookie = `user=${user.uid}`;
@@ -51,9 +49,18 @@ var signIn = function(email, password, state) {
     });
 };
 
+var logOut = function() {
+  signOut(auth).then(() => {
+    console.log('Firebase signOut successful.')
+  }).catch((error) => {
+    // An error happened.
+  });
+};
+
 var methods = {
   signUp: signUp,
-  signIn: signIn
+  signIn: signIn,
+  logOut: logOut
 };
 
 export default methods;

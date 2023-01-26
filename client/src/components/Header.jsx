@@ -25,7 +25,7 @@ const Header = function({state}) {
 
   return (
     <div className='header h'>
-      {state.user && <NavBar />}
+      {state.user && <NavBar state={state}/>}
       <div className='spacer h'>
         <h1>artBoard</h1>
       </div>

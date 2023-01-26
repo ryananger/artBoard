@@ -35,8 +35,9 @@ const Login = function({state}) {
             <input className='loginInput' name='pass'  autoComplete='off' type='password' placeholder='Password!'/>
           </div>
           {renderSubmit()}
-          <div className='signUpText' onClick={()=>{setSignUp(true)}}>
+          <div className='signUpText' onClick={()=>{setSignUp(!signUp)}}>
             {!signUp && 'Create an account?'}
+            {signUp  && 'Sign in?'}
           </div>
         </div>
 
