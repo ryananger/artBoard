@@ -7,7 +7,9 @@ import ZoomImage from './ZoomImage.jsx';
 const ImageViewer = ({state}) => {
   const [currentPage, setPage]  = useState(1);
   const [fetching, setFetching] = useState(false);
+
   const [zoom, setZoom] = useState(null);
+  const [fullZoom, setFull] = useState(false);
 
   const imageData = state.imageData;
   const search    = state.search;
@@ -36,13 +38,24 @@ const ImageViewer = ({state}) => {
     return images;
   };
 
-  var toggleOverflow = function() {
-    return zoom !== null ? {overflow: 'hidden'} : {overflow: 'overlay'};
+  var modalStyle = function() {
+    var style = {};
+
+    style.overflow = zoom === null ? 'overlay' : 'hidden';
+    style.position = fullZoom ? 'unset' : 'relative';
+
+    if (zoom !== null) {
+      style.overflow = 'hidden';
+    } else {
+      style.overflow = 'overlay';
+    }
+
+    return style;
   };
 
   return (
-    <div id='viewer' className='imageViewer h' onScroll={handleScroll} style={toggleOverflow()}>
-      {zoom !== null && <ZoomImage imageData={imageData} setZoom={setZoom} index={zoom}/>}
+    <div id='viewer' className='imageViewer h' onScroll={handleScroll} style={modalStyle()}>
+      {zoom !== null && <ZoomImage imageData={imageData} setZoom={setZoom} index={zoom} setFull={setFull} full={fullZoom}/>}
       {renderImages()}
     </div>
   );

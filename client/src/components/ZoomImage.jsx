@@ -1,19 +1,29 @@
 import React, { useState, useEffect } from 'react';
 import {
   BsArrowRightCircleFill as Next,
-  BsArrowLeftCircleFill as Prev
+  BsArrowLeftCircleFill  as Prev,
+  BsFullscreen           as Full
 } from 'react-icons/bs';
 
 import ax from '../util/ax.js';
 import ImageButtons from './ImageButtons.jsx';
 
-const ZoomImage = ({imageData, setZoom, index}) => {
+const ZoomImage = ({imageData, setZoom, index, setFull, full}) => {
   var image = imageData[index];
   var viewer = document.getElementById('viewer');
   var ratio = image.width/image.height;
 
+  var modalStyle = function() {
+    var style = {};
+
+    style.position = 'absolute';
+    style.top = full ? 0 : viewer.scrollTop;
+
+    return style;
+  };
+
   return (
-    <div className='zoomModal h' style={{position: 'absolute', top: viewer.scrollTop}}>
+    <div className='zoomModal h' style={modalStyle()}>
       <div className='zoomButtonContainer prev h'>
         {index > 0 && <Prev className='zoomButton' size={48} onClick={()=>{setZoom(index - 1)}}/>}
       </div>
@@ -27,7 +37,8 @@ const ZoomImage = ({imageData, setZoom, index}) => {
           }}
           onClick={()=>{setZoom(null)}}
         />
-        <ImageButtons />
+        <div className='navSpacer' style={{position: 'absolute'}}/>
+        <ImageButtons inZoom={true} full={full} setFull={setFull}/>
       </div>
       <div className='zoomButtonContainer next h'>
         {index < imageData.length - 1 && <Next className='zoomButton' size={48} onClick={()=>{setZoom(index + 1)}}/>}
