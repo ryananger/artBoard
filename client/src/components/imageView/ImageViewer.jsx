@@ -48,7 +48,7 @@ const ImageViewer = () => {
   var modalStyle = function() {
     var style = {};
 
-    style.overflow = zoom === null ? 'overlay' : 'hidden';
+    style.overflow = !st.imageData[zoom] ? 'overlay' : 'hidden';
     style.position = fullZoom ? 'unset' : 'relative';
 
     return style;

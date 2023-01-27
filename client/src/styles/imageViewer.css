@@ -21,11 +21,14 @@
   border-style: none;
   width: 0.7vw;
   min-width: 6px;
+
+  height: 98%;
 }
 
 ::-webkit-scrollbar-thumb {
   border: 1px solid var(--darkText);
   background-color: var(--salmon);
+  border-radius: 20px;
 }
 
 .imageViewer::-webkit-scrollbar,

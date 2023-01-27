@@ -12,6 +12,7 @@ var ax = {
 
         viewer.scrollTop = 0;
 
+        st.setZoom(null);
         st.setImageData(response.data);
       })
   },
@@ -39,14 +40,14 @@ var ax = {
         st.setView('home');
       })
   },
-  getUser: function(uid, fav) {
+  getUser: function(uid, alt) {
     axios.get(urlBase + 'users/' + uid)
       .then(function(response) {
         document.cookie = `user=${uid}`;
 
         st.setUser(response.data);
 
-        if (!fav) {
+        if (!alt) {
           st.setView('home');
         }
       })

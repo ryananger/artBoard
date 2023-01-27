@@ -24,10 +24,20 @@ const NavBar = () => {
     st.setImageData(st.user.favorites);
   };
 
+  var viewBoards = function() {
+    ax.getUser(st.user.uid, true);
+    st.setView('boards');
+    st.setZoom(null);
+  };
+
+  var viewDraw = function() {
+    st.setZoom(null);
+  };
+
   return (
     <div className='navButtons v'>
       <Heart  className='navButton' size={32} onClick={viewFavorites}/>
-      <List   className='navButton' size={32}/>
+      <List   className='navButton' size={32} onClick={viewBoards}/>
       <Draw   className='navButton' size={32}/>
       <div    className='navSpacer'><hr/><hr/></div>
       <LogOut className='navButton' size={28} onClick={handleLogout}/>

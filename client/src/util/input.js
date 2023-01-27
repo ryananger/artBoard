@@ -14,7 +14,7 @@ window.addEventListener('mousemove', function(e) {
 
   var element = document.elementFromPoint(mouse.x, mouse.y);
 
-  if (element.id.slice(0, 5) === 'image') {
+  if (element && element.id.slice(0, 5) === 'image') {
     mouse.over = Number(element.id.slice(5));
   } else {
     mouse.over = null;
@@ -26,9 +26,11 @@ window.addEventListener('keypress', function(e) {
 
   switch (e.key) {
     case 'f':
+      if (st.view !== 'home' && st.view !== 'favorites') {return;}
+
       var image;
 
-      if (st.zoom === null) {
+      if (!st.imageData[st.zoom]) {
         if (mouse.over !== null) {
           image = st.imageData[mouse.over];
         } else {

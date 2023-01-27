@@ -12,6 +12,7 @@ import Profile     from './Profile.jsx';
 import Header      from './header/Header.jsx';
 import Featured    from './Featured.jsx';
 import ImageViewer from './imageView/ImageViewer.jsx';
+import BoardViewer from './boardView/BoardViewer_.jsx';
 
 var defaultQuery = {
   title: 'Drawing',
@@ -47,6 +48,13 @@ const App = function() {
           <ImageViewer />
           </>
         );
+      case 'boards':
+        return (
+          <>
+          <Featured />
+          <BoardViewer />
+          </>
+        );
       case 'profile':
         return <Profile />;
     }
@@ -59,7 +67,7 @@ const App = function() {
   }, []);
 
   return (
-    <div id='app' className='app v'>
+    <div id='app' className='app'>
       <Header />
       {renderView()}
     </div>
