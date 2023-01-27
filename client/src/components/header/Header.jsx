@@ -28,7 +28,9 @@ const Header = function() {
     <div className='header h'>
       {st.user && <NavBar />}
       <div className='spacer h'>
-        <h1>artBoard</h1>
+        <h1 id='title' onClick={()=>{st.setView('home')}}>
+          artBoard
+        </h1>
       </div>
       <SearchBar />
       <div className='spacer right h'>

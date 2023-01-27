@@ -11,6 +11,11 @@
   background-color: var(--salmon);
 }
 
+#title:hover {
+  cursor: pointer;
+  color: var(--cream);
+}
+
 .spacer {
   min-width: 200px;
 }

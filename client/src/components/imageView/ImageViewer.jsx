@@ -60,7 +60,7 @@ const ImageViewer = () => {
     }
   };
 
-  useEffect(getPhotos, []);
+  useEffect(getPhotos, [st.view === 'home']);
 
   return (
     <div id='viewer' className='imageViewer h' onScroll={handleScroll} style={modalStyle()}>

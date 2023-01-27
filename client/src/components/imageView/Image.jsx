@@ -4,6 +4,7 @@ import { AiFillHeart      as Heart,
 
 import '../../styles/image.css';
 import ax from '../../util/ax.js';
+import helpers from '../../util/helpers.js';
 
 import st           from '../state.js';
 import PreLoad      from './PreLoad.jsx';
@@ -16,6 +17,18 @@ const Image = ({image, index}) => {
     backgroundColor: image.avg_color
   };
 
+  const isFavorite = helpers.isFavorite(image);
+
+  var renderHeart = function() {
+    if (isFavorite) {
+      return (
+        <div className='hoverHeart v'>
+          <Heart size={32}/>
+        </div>
+      )
+    }
+  };
+
   return (
     <div className='imageContainer v' style={ratio}>
       <img
@@ -24,7 +37,8 @@ const Image = ({image, index}) => {
         style={style}
         onClick={()=>{st.setZoom(index)}}
       />
-      <ImageButtons image={image}/>
+      {renderHeart()}
+      <ImageButtons image={image} isFavorite={isFavorite}/>
       <PreLoad image={image}/>
     </div>
   );

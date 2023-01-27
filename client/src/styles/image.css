@@ -6,6 +6,11 @@
 
   margin: 0;
   position: relative;
+  user-select: none;
+}
+
+.imageContainer * {
+  user-select: none;
 }
 
 .medImage {
@@ -33,6 +38,10 @@
   display: flex;
 }
 
+.imageContainer:hover .hoverHeart {
+  display: none;
+}
+
 .imageButtons {
   display: none;
   position: absolute;
@@ -54,6 +63,21 @@
 .imageButton:hover {
   cursor: pointer;
   color: var(--salmon);
+}
+
+.hoverHeart {
+  position: absolute;
+  bottom: -0.9vh;
+  margin: 1vh;
+  width: 42px;
+  height: 42px;
+  border: 2px solid var(--darkText);
+  box-sizing: border-box;
+  z-index: 0;
+  background-color: var(--cream);
+  color: var(--salmon);
+  border-radius: 40px;
+  box-shadow: 0 2px 3px var(--shadow);
 }
 
 .fav {

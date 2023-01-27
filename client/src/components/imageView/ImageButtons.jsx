@@ -6,9 +6,8 @@ import st      from '../state.js';
 import ax      from '../../util/ax.js';
 import helpers from '../../util/helpers.js';
 
-const ImageButtons = ({image}) => {
+const ImageButtons = ({image, isFavorite}) => {
   const buttonStyle = {top: 0};
-  const isFavorite = helpers.isFavorite(image);
 
   var handleFav = function() {
     if (!st.user) {return;}
