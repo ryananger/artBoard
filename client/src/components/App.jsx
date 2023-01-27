@@ -3,7 +3,7 @@ import React, {useEffect, useState} from 'react';
 import '../styles/style.css';
 import ax          from '../util/ax.js';
 import helpers     from '../util/helpers.js';
-import cookieParse from '../util/cookieHandle.js';
+import cookieParse from '../util/cookieParse.js';
 
 import st          from './state.js';
 import Login       from './Login.jsx';

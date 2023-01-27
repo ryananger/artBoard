@@ -32,7 +32,11 @@ app.get('/users/:uid', function(req, res) {
 
 app.post('/favorite', function(req, res) {
   controller.addFavorite(req, res);
-})
+});
+
+app.put('/favorite', function(req, res) {
+  controller.removeFavorite(req, res);
+});
 
 const PORT = 4001;
 

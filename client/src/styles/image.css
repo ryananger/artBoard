@@ -56,6 +56,10 @@
   color: var(--salmon);
 }
 
+.fav {
+  color: var(--salmon);
+}
+
 .add:hover {
   cursor: pointer;
   color: var(--sky);

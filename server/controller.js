@@ -31,8 +31,6 @@ var controller = {
       .then(function(response) {
         var user = parseUser(response);
 
-        console.log('Sending user:', user);
-
         res.status(201);
         res.json(user);
       })
@@ -41,8 +39,6 @@ var controller = {
     User.findOne({uid: uid})
       .then(function(response) {
         var user = parseUser(response);
-
-        console.log('Sending user:', user);
 
         res.status(200);
         res.json(user);
@@ -57,8 +53,32 @@ var controller = {
     var option = {new: true};
 
     User.findOneAndUpdate(filter, update, option)
-      .then(function(response) {
-        res.json(response);
+      .then(function(user) {
+        res.json(user);
+      })
+  },
+  removeFavorite: function(req, res) {
+    var uid   = req.body.uid;
+    var image = req.body.image;
+
+    var filter = {uid: uid};
+
+    User.findOne(filter)
+      .then(function(user) {
+        var newFav = [];
+
+        user.favorites.map((fav)=>{
+          if (fav.id !== image.id) {
+            newFav.push(fav);
+          }
+        })
+
+        console.log(user.favorites.length, newFav.length);
+
+        User.findOneAndUpdate(filter, {favorites: newFav}, {new: true})
+          .then(function(user) {
+            res.json(user);
+          })
       })
   }
 };

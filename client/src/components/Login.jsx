@@ -4,7 +4,6 @@ import '../styles/login.css';
 import ax           from '../util/ax.js';
 import auth         from '../util/auth.js';
 import helpers      from '../util/helpers.js';
-import cookieHandle from '../util/cookieHandle.js';
 
 import st from './state.js';
 

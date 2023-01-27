@@ -18,6 +18,7 @@ const NavBar = () => {
   };
 
   var viewFavorites = function() {
+    ax.getUser(st.user.uid, true);
     st.setView('favorites');
     st.setZoom(null);
     st.setImageData(st.user.favorites);

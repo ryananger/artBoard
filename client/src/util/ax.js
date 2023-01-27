@@ -41,7 +41,7 @@ var ax = {
         st.setView('home');
       })
   },
-  getUser: function(uid) {
+  getUser: function(uid, fav) {
     axios.get(urlBase + 'users/' + uid)
       .then(function(response) {
         console.log(response);
@@ -49,12 +49,23 @@ var ax = {
         document.cookie = `user=${uid}`;
 
         st.setUser(response.data);
-        st.setView('home');
+
+        if (!fav) {
+          st.setView('home');
+        }
       })
   },
 
   addFavorite: function(image) {
     axios.post(urlBase + 'favorite', {uid: st.user.uid, image: image})
+      .then(function(response) {
+        console.log(response);
+
+        st.setUser(response.data);
+      })
+  },
+  removeFavorite: function(image) {
+    axios.put(urlBase + 'favorite', {uid: st.user.uid, image: image})
       .then(function(response) {
         console.log(response);
 

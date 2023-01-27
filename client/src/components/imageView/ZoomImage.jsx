@@ -6,8 +6,8 @@ import { BsArrowRightCircleFill as Next,
 import '../../styles/zoom.css';
 import ax from '../../util/ax.js';
 
-import st           from '../state.js';
-import ImageButtons from './ImageButtons.jsx';
+import st          from '../state.js';
+import ZoomButtons from './ZoomButtons.jsx';
 
 const ZoomImage = ({index}) => {
   const setZoom   = st.setZoom;
@@ -50,7 +50,7 @@ const ZoomImage = ({index}) => {
           onClick={()=>{setZoom(null)}}
         />
         <div className='navSpacer' style={{position: 'absolute'}}/>
-        <ImageButtons image={image} inZoom={true}/>
+        <ZoomButtons image={image} inZoom={true}/>
       </div>
       <div className='zoomButtonContainer next h'>
         {index < imageData.length - 1 && <Next className='zoomButton' size={48} onClick={()=>{setZoom(index + 1)}}/>}

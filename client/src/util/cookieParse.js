@@ -15,8 +15,4 @@ var cookieParse = function() {
   return cookie;
 };
 
-var cookieHandle = {
-  cookieParse
-};
-
 export default cookieParse;
