@@ -33,8 +33,6 @@ var ax = {
   createUser: function(user) {
     axios.post(urlBase + 'users', user)
       .then(function(response) {
-        console.log(response);
-
         document.cookie = `user=${user.uid}`;
 
         st.setUser(response.data);
@@ -44,8 +42,6 @@ var ax = {
   getUser: function(uid, fav) {
     axios.get(urlBase + 'users/' + uid)
       .then(function(response) {
-        console.log(response);
-
         document.cookie = `user=${uid}`;
 
         st.setUser(response.data);

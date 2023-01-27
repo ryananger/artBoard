@@ -16,13 +16,7 @@ const ZoomButtons = ({image}) => {
   };
 
   var handleFav = function() {
-    if (!st.user) {return;}
-
-    if (!isFavorite) {
-      ax.addFavorite(image);
-    } else {
-      ax.removeFavorite(image);
-    }
+    helpers.handleFav(image, isFavorite);
   };
 
   return (

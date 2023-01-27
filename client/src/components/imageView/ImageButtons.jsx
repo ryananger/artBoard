@@ -10,13 +10,7 @@ const ImageButtons = ({image, isFavorite}) => {
   const buttonStyle = {top: 0};
 
   var handleFav = function() {
-    if (!st.user) {return;}
-
-    if (!isFavorite) {
-      ax.addFavorite(image);
-    }else {
-      ax.removeFavorite(image);
-    }
+    helpers.handleFav(image, isFavorite);
   };
 
   return (

@@ -32,6 +32,7 @@ const Image = ({image, index}) => {
   return (
     <div className='imageContainer v' style={ratio}>
       <img
+        id={index}
         src={image.src.medium}
         className='medImage'
         style={style}

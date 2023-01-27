@@ -2,6 +2,7 @@ import React, {useEffect, useState} from 'react';
 
 import '../styles/style.css';
 import ax          from '../util/ax.js';
+import input       from '../util/input.js';
 import helpers     from '../util/helpers.js';
 import cookieParse from '../util/cookieParse.js';
 

@@ -1,4 +1,5 @@
 import st from '../components/state.js';
+import ax from './ax.js';
 
 var helpers = {
   rand: function(num) {
@@ -16,6 +17,15 @@ var helpers = {
     });
 
     return fav;
+  },
+  handleFav: function(image, isFavorite) {
+    if (!st.user) {return;}
+
+    if (!isFavorite) {
+      ax.addFavorite(image);
+    } else {
+      ax.removeFavorite(image);
+    }
   }
 };
 
