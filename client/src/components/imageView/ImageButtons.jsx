@@ -8,16 +8,14 @@ import helpers from '../../util/helpers.js';
 
 const ImageButtons = ({image}) => {
   const buttonStyle = {top: 0};
-  const [isFavorite, setFav]  = useState(helpers.isFavorite(st.user, image));
+  const isFavorite = helpers.isFavorite(image);
 
   var handleFav = function() {
     if (!st.user) {return;}
 
     if (!isFavorite) {
-      setFav(true);
       ax.addFavorite(image);
     }else {
-      setFav(false);
       ax.removeFavorite(image);
     }
   };

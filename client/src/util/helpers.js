@@ -1,17 +1,21 @@
+import st from '../components/state.js';
+
 var helpers = {
   rand: function(num) {
     return Math.floor(Math.random() * num);
   },
-  isFavorite: function(user, image) {
-    if (!user) {return false;}
+  isFavorite: function(image) {
+    if (!st.user) {return false;}
 
-    var favIDs = [];
+    var fav = false;
 
-    user.favorites.map((image)=>{
-      favIDs.push(image.id);
+    st.user.favorites.map((entry)=>{
+      if (entry.id === image.id) {
+        fav = true;
+      }
     });
 
-    return favIDs.indexOf(image.id) !== -1;
+    return fav;
   }
 };
 

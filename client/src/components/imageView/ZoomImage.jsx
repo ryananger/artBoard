@@ -50,7 +50,7 @@ const ZoomImage = ({index}) => {
           onClick={()=>{setZoom(null)}}
         />
         <div className='navSpacer' style={{position: 'absolute'}}/>
-        <ZoomButtons image={image} inZoom={true}/>
+        <ZoomButtons image={image}/>
       </div>
       <div className='zoomButtonContainer next h'>
         {index < imageData.length - 1 && <Next className='zoomButton' size={48} onClick={()=>{setZoom(index + 1)}}/>}

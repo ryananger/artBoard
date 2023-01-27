@@ -73,8 +73,6 @@ var controller = {
           }
         })
 
-        console.log(user.favorites.length, newFav.length);
-
         User.findOneAndUpdate(filter, {favorites: newFav}, {new: true})
           .then(function(user) {
             res.json(user);

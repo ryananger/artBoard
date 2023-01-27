@@ -9,7 +9,7 @@ import helpers from '../../util/helpers.js';
 
 const ZoomButtons = ({image}) => {
   const buttonStyle = {top: '48px', right: '1.5vh'};
-  const [isFavorite, setFav]  = useState(helpers.isFavorite(st.user, image));
+  const isFavorite  = helpers.isFavorite(image);
 
   var toggleFull = function() {
     st.setFull(!st.fullZoom);
@@ -19,17 +19,15 @@ const ZoomButtons = ({image}) => {
     if (!st.user) {return;}
 
     if (!isFavorite) {
-      setFav(true);
       ax.addFavorite(image);
     } else {
-      setFav(false);
       ax.removeFavorite(image);
     }
   };
 
   return (
     <div className='imageButtons v' style={buttonStyle}>
-      <Heart className='imageButton'     size={32} onClick={handleFav}/>
+      <Heart className={`imageButton ${isFavorite ? 'fav': ''}`} size={32} onClick={handleFav}/>
       <Add   className='imageButton add' size={32}/>
 
       <Full  className='fullButton'      size={24} onClick={toggleFull}/>

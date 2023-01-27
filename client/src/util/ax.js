@@ -59,17 +59,17 @@ var ax = {
   addFavorite: function(image) {
     axios.post(urlBase + 'favorite', {uid: st.user.uid, image: image})
       .then(function(response) {
-        console.log(response);
-
         st.setUser(response.data);
       })
   },
   removeFavorite: function(image) {
     axios.put(urlBase + 'favorite', {uid: st.user.uid, image: image})
       .then(function(response) {
-        console.log(response);
-
         st.setUser(response.data);
+
+        if (st.view === 'favorites') {
+          st.setImageData(response.data.favorites);
+        }
       })
   },
   addBoard: function() {
