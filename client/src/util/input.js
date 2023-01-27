@@ -12,7 +12,13 @@ window.addEventListener('mousemove', function(e) {
   mouse.x = e.clientX;
   mouse.y = e.clientY;
 
-  mouse.over = document.elementFromPoint(mouse.x, mouse.y);
+  var element = document.elementFromPoint(mouse.x, mouse.y);
+
+  if (element.id.slice(0, 5) === 'image') {
+    mouse.over = Number(element.id.slice(5));
+  } else {
+    mouse.over = null;
+  }
 }, {passive: true});
 
 window.addEventListener('keypress', function(e) {
@@ -23,7 +29,11 @@ window.addEventListener('keypress', function(e) {
       var image;
 
       if (st.zoom === null) {
-        image = st.imageData[mouse.over.id];
+        if (mouse.over !== null) {
+          image = st.imageData[mouse.over];
+        } else {
+          return;
+        }
       } else {
         image = st.imageData[st.zoom];
       }
