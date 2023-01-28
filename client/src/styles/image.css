@@ -61,6 +61,35 @@
   box-shadow: 0 2px 3px var(--shadow);
 }
 
+.boardSelect {
+  position: absolute;
+  top: 74px;
+  right: 0;
+  min-width: 10vw;
+  height: 32px;
+  border: 2px solid var(--darkText);
+  border-radius: 20px;
+  background-color: var(--cream);
+  box-shadow: 0 4px 6px var(--shadow);
+
+  color: var(--sky);
+}
+
+#boardForm {
+  height: 100%;
+}
+
+.boardInput {
+  outline: none;
+  border: 1px solid var(--salmon);
+  margin: 0;
+  margin-left: 3px;
+  padding-left: 4px;
+  border-radius: 20px;
+  width: 95%;
+  height: 80%;
+}
+
 .imageButton:hover {
   cursor: pointer;
   color: var(--salmon);
@@ -84,7 +113,12 @@
   color: var(--salmon);
 }
 
-.add:hover {
+.add:hover, .checkMark:hover {
   cursor: pointer;
   color: var(--sky);
+}
+
+.checkMark {
+  min-width: 32px;
+  margin: 1px;
 }
