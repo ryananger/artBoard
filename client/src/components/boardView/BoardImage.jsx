@@ -21,7 +21,7 @@ const Image = ({image, index}) => {
     <div className='boardImageContainer v' style={ratio}>
       <img
         id={'image' + index}
-        src={image.src.large}
+        src={image.src.large2x}
         className='boardImage'
         style={style}
         onClick={()=>{st.setZoom(index)}}

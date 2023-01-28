@@ -6,6 +6,8 @@ var urlBase = process.env.URL;
 
 var ax = {
   searchPhotos: function(query, num) {
+    console.log(query);
+
     axios.get(urlBase + 'search/' + num, {params: {search: query}})
       .then(function(response) {
         var viewer = document.getElementById('viewer');
@@ -45,7 +47,13 @@ var ax = {
       .then(function(response) {
         document.cookie = `user=${uid}`;
 
-        st.setUser(response.data);
+        var user = {
+          ...response.data,
+          boards: []
+        };
+
+        st.setUser(user);
+        ax.getBoards(user);
 
         if (!alt) {
           st.setView('home');
@@ -69,8 +77,31 @@ var ax = {
         }
       })
   },
-  addBoard: function() {
+  addBoard: function(name, image) {
+    var newBoard = {
+      ownerId: st.user.uid,
+      boardname: name,
+      images: [image],
+      config: {}
+    };
 
+    axios.post(urlBase + 'boards', newBoard)
+      .then(function(response) {
+        ax.getBoards(st.user);
+      })
+  },
+  getBoards: function(user) {
+    axios.get(urlBase + 'boards/' + user.uid)
+      .then(function(response) {
+        var updatedUser = {
+          ...user,
+          boards: response.data
+        };
+
+        console.log(updatedUser);
+
+        st.setUser(updatedUser);
+      })
   },
 
   updateProfile: function() {

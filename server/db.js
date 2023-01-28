@@ -14,7 +14,6 @@ const userSchema = new mongoose.Schema({
   lastName:     String,
   pic:          String,
   favorites:   [Object],
-  boards:      [String],
   uploads:     [String],
 
   bio:         {type: String, maxLength: 140}
@@ -23,7 +22,7 @@ const userSchema = new mongoose.Schema({
 const boardSchema = new mongoose.Schema({
   ownerId:      String,
   boardname:    String,
-  photos:      [Object],
+  images:      [Object],
   config:       Object
 });
 

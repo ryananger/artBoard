@@ -84,10 +84,12 @@
   border: 1px solid var(--salmon);
   margin: 0;
   margin-left: 3px;
+  padding: 0;
   padding-left: 4px;
   border-radius: 20px;
+  box-sizing: border-box;
   width: 95%;
-  height: 80%;
+  height: 26px;
 }
 
 .imageButton:hover {

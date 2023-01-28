@@ -78,6 +78,20 @@ var controller = {
             res.json(user);
           })
       })
+  },
+  addBoard: function(req, res) {
+    var uid   = req.body.ownerId;
+
+    Board.create(req.body)
+      .then(function(board) {
+        controller.getBoards(uid, res);
+      })
+  },
+  getBoards: function(uid, res) {
+    Board.find({ownerId: uid})
+      .then(function(boards) {
+        res.json(boards);
+      });
   }
 };
 

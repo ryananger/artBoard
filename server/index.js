@@ -38,6 +38,14 @@ app.put('/favorite', function(req, res) {
   controller.removeFavorite(req, res);
 });
 
+app.get('/boards/:uid', function(req, res) {
+  controller.getBoards(req.params.uid, res);
+});
+
+app.post('/boards', function(req, res) {
+  controller.addBoard(req, res);
+});
+
 const PORT = 4001;
 
 app.listen(PORT);
