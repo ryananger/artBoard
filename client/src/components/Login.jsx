@@ -30,7 +30,7 @@ const Login = function() {
 
   var renderForm = function() {
     return (
-      <form id='loginForm' className='loginForm v' onSubmit={handleSubmit} autoComplete>
+      <form id='loginForm' className='loginForm v' onSubmit={handleSubmit} autoComplete='off'>
         <div className='formHead v'>
           <h2>
             Welcome to artBoard!

@@ -61,7 +61,7 @@ var controller = {
 
     User.findOneAndUpdate(filter, update, option)
       .then(function(user) {
-        res.json(user);
+        controller.getUser(user.uid, res);
       })
   },
   removeFavorite: function(req, res) {
@@ -82,7 +82,7 @@ var controller = {
 
         User.findOneAndUpdate(filter, {favorites: newFav}, {new: true})
           .then(function(user) {
-            res.json(user);
+            controller.getUser(user.uid, res);
           })
       })
   },

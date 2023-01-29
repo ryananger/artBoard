@@ -39,7 +39,7 @@ const Image = ({image, index}) => {
         onClick={()=>{st.setZoom(index)}}
       />
       {renderHeart()}
-      <ImageButtons image={image} isFavorite={isFavorite}/>
+      {st.user && <ImageButtons image={image} isFavorite={isFavorite}/>}
       <PreLoad image={image}/>
     </div>
   );

@@ -10,6 +10,7 @@ import helpers from '../../util/helpers.js';
 const ImageButtons = ({image, isFavorite}) => {
   const [adding, setAdding] = useState(false);
   const [textIn, setTextIn] = useState(false);
+  const boards = st.user.boards;
   const buttonStyle = {top: 0};
 
   var handleFav = function() {
@@ -22,13 +23,13 @@ const ImageButtons = ({image, isFavorite}) => {
 
   var handleAdd = function(type) {
     if (type === 'select') {
-      var selected = document.getElementById('select').value;
+      var selected = document.getElementById('select' + image.id).value;
 
       if (selected === 'new') {
         setTextIn(true);
         return;
       } else {
-        var name = st.user.boards[selected].boardname;
+        var name = boards[selected].boardname;
 
         ax.addToBoard(name, image);
 
@@ -66,7 +67,7 @@ const ImageButtons = ({image, isFavorite}) => {
     } else {
       return (
         <div className='boardSelect h'>
-          <select id='select' className='boardInput'>
+          <select id={'select' + image.id} className='boardInput'>
             {renderOptions()}
             <option value='new'>New board...</option>
           </select>
@@ -77,20 +78,22 @@ const ImageButtons = ({image, isFavorite}) => {
   };
 
   var renderOptions = function() {
-    return st.user.boards.map((board, i)=>{
+    return boards.map((board, i)=>{
       return <option value={i}>{board.boardname}</option>
     })
   };
 
   useEffect(function() {
+    if (!boards[0]) {
+      setTextIn(true);
+    }
+  }, [adding]);
+
+  useEffect(function() {
     if (adding && st.lastBoard) {
-      var select = document.getElementById('select');
+      var select = document.getElementById('select' + image.id);
 
       select.value = st.lastBoard;
-    }
-
-    if (!st.user || !st.user.boards[0]) {
-      setTextIn(true);
     }
   }, [adding]);
 

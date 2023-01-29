@@ -36,11 +36,11 @@ const NavBar = () => {
 
   return (
     <div className='navButtons v'>
-      <Heart  className='navButton' size={32} onClick={viewFavorites}/>
-      <List   className='navButton' size={32} onClick={viewBoards}/>
-      <Draw   className='navButton' size={32}/>
+      <Heart  className='navButton heart' size={32} onClick={viewFavorites}/>
+      <List   className='navButton list' size={32} onClick={viewBoards}/>
+      {/* <Draw   className='navButton' size={32}/> */}
       <div    className='navSpacer'><hr/><hr/></div>
-      <LogOut className='navButton' size={28} onClick={handleLogout}/>
+      <LogOut className='navButton logout' size={28} onClick={handleLogout}/>
     </div>
   );
 };
