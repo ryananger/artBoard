@@ -31,6 +31,8 @@ var controller = {
       .then(function(response) {
         var user = parseUser(response);
 
+        user.boards = [];
+
         res.status(201);
         res.json(user);
       })
@@ -104,14 +106,10 @@ var controller = {
       boardname: req.body.boardname
     };
 
-    console.log(req.body);
-
     var update = {'$push': {images: req.body.image}};
 
     Board.findOneAndUpdate(filter, update)
       .then(function(response) {
-        console.log(response)
-
         res.send(`Added to ${filter.boardname}.`);
       })
   }
