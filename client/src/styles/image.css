@@ -90,6 +90,7 @@
   box-sizing: border-box;
   width: 95%;
   height: 26px;
+  max-width: 200px;
 }
 
 .imageButton:hover {

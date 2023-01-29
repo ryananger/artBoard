@@ -1,9 +1,7 @@
-.boardView {
-  width: 80vw;
-  height: 100%;
-  padding: 2vh;
-  padding-top: 0;
-  box-sizing: border-box;
+
+.boardContainer {
+  width: 85vw;
+  max-height: 90vh;
 }
 
 .boardViewer {
@@ -16,16 +14,22 @@
   margin: 2vh;
   margin-top: 0;
   margin-bottom: 4vh;
-  border: 3px solid var(--darkText);
-  border-style: solid none none;
   border-radius: 0 0 20px 20px;
   background-color: var(--cream);
   box-shadow: 0 10px 15px #cc69503d;
 }
 
 .boardConfig {
-  /* border: 1px solid var(--darkText);
-  border-style: none none solid none;
+  border: 3px solid var(--darkText);
+  border-style: solid none none;
+  border-bottom: 1px solid var(--darkText);
   width: 100%;
-  height: 100px; */
+  height: 48px;
+
+  padding-left: 12px;
+  padding-right: 12px;
+  box-sizing: border-box;
+
+  background-color: var(--cream);
+  box-shadow: 0 10px 15px #cc69503d;
 }

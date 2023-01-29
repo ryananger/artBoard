@@ -21,6 +21,12 @@ const boardViewer = function() {
     return images;
   };
 
+  var renderOptions = function() {
+    return boards.map((board, i)=>{
+      return <option value={i}>{board.boardname}</option>
+    })
+  };
+
   useEffect(function() {
     if (boards[0]) {
       setBoard(boards[0]);
@@ -32,11 +38,15 @@ const boardViewer = function() {
   }, []);
 
   return (
-    <div className='boardViewer h'>
-      {/* <div className='boardConfig h'>
-
-      </div> */}
-      {board && renderImages()}
+    <div className='boardContainer v' >
+      <div className='boardConfig h'>
+        <select id='select' className='boardInput' onChange={(e)=>{setBoard(boards[e.target.value])}}>
+          {renderOptions()}
+        </select>
+      </div>
+      <div className='boardViewer h'>
+        {board && renderImages()}
+      </div>
     </div>
   );
 };
