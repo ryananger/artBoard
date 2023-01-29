@@ -28,10 +28,17 @@ const boardViewer = function() {
   };
 
   useEffect(function() {
-    if (boards[0]) {
-      setBoard(boards[0]);
+    if (st.lastBoard) {
+      var select = document.getElementById('boardSelect');
 
-      console.log(boards);
+      select.value = st.lastBoard;
+
+      setBoard(boards[st.lastBoard]);
+      return;
+    }
+
+    if (!board && boards[0]) {
+      setBoard(boards[0]);
     } else {
       setBoard({images: st.user.favorites});
     }
@@ -40,7 +47,7 @@ const boardViewer = function() {
   return (
     <div className='boardContainer v' >
       <div className='boardConfig h'>
-        <select id='select' className='boardInput' onChange={(e)=>{setBoard(boards[e.target.value])}}>
+        <select id='boardSelect' className='boardInput' onChange={(e)=>{setBoard(boards[e.target.value])}}>
           {renderOptions()}
         </select>
       </div>

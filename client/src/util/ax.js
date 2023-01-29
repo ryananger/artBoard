@@ -6,13 +6,13 @@ var urlBase = process.env.URL;
 
 var ax = {
   searchPhotos: function(query, num) {
-    console.log(query);
-
     axios.get(urlBase + 'search/' + num, {params: {search: query}})
       .then(function(response) {
         var viewer = document.getElementById('viewer');
 
-        viewer.scrollTop = 0;
+        if (viewer) {
+          viewer.scrollTop = 0;
+        }
 
         st.setZoom(null);
         st.setImageData(response.data);

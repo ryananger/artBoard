@@ -28,7 +28,9 @@ const ImageButtons = ({image, isFavorite}) => {
         setTextIn(true);
         return;
       } else {
-        ax.addToBoard(selected, image);
+        var name = st.user.boards[selected].boardname;
+
+        ax.addToBoard(name, image);
 
         st.lastBoard = selected;
         setAdding(false);
@@ -75,12 +77,18 @@ const ImageButtons = ({image, isFavorite}) => {
   };
 
   var renderOptions = function() {
-    return st.user.boards.map((board)=>{
-      return <option value={board.boardname}>{board.boardname}</option>
+    return st.user.boards.map((board, i)=>{
+      return <option value={i}>{board.boardname}</option>
     })
   };
 
   useEffect(function() {
+    if (adding && st.lastBoard) {
+      var select = document.getElementById('select');
+
+      select.value = st.lastBoard;
+    }
+
     if (!st.user || !st.user.boards[0]) {
       setTextIn(true);
     }

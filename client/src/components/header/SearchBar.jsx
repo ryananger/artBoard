@@ -11,12 +11,13 @@ const SearchBar = function() {
   var handleSearch = function(e) {
     e.preventDefault();
 
+    st.setView('home');
+
     var search = {
       title: 'search' + searchHistory.length,
       query: e.target.input.value
     };
 
-    st.setView('home');
     st.setSearch(search);
     searchHistory.push(search);
     ax.searchPhotos(search.query, 1);

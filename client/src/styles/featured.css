@@ -1,6 +1,7 @@
 /* FEATURED BUTTONS */
 
 .featuredButtons {
+  flex: 0;
   margin: 0.5vh;
   width: 70vw;
   height: 4vh;
