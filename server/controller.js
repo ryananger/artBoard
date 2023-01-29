@@ -40,8 +40,13 @@ var controller = {
       .then(function(response) {
         var user = parseUser(response);
 
-        res.status(200);
-        res.json(user);
+        Board.find({ownerId: uid})
+          .then(function(boards) {
+            user.boards = boards;
+
+            res.status(200);
+            res.json(user);
+          })
       })
   },
   addFavorite: function(req, res) {
@@ -79,7 +84,7 @@ var controller = {
           })
       })
   },
-  addBoard: function(req, res) {
+  createBoard: function(req, res) {
     var uid   = req.body.ownerId;
 
     Board.create(req.body)
@@ -92,6 +97,23 @@ var controller = {
       .then(function(boards) {
         res.json(boards);
       });
+  },
+  addToBoard: function(req, res) {
+    var filter = {
+      ownerId: req.body.ownerId,
+      boardname: req.body.boardname
+    };
+
+    console.log(req.body);
+
+    var update = {'$push': {images: req.body.image}};
+
+    Board.findOneAndUpdate(filter, update)
+      .then(function(response) {
+        console.log(response)
+
+        res.send(`Added to ${filter.boardname}.`);
+      })
   }
 };
 
@@ -104,7 +126,6 @@ var parseUser = function(doc) {
     lastName:  doc.lastName  || null,
 
     favorites: doc.favorites,
-    boards:    doc.boards,
     uploads:   doc.uploads
   };
 

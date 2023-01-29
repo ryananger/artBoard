@@ -47,13 +47,7 @@ var ax = {
       .then(function(response) {
         document.cookie = `user=${uid}`;
 
-        var user = {
-          ...response.data,
-          boards: []
-        };
-
-        st.setUser(user);
-        ax.getBoards(user);
+        st.setUser(response.data);
 
         if (!alt) {
           st.setView('home');
@@ -77,7 +71,7 @@ var ax = {
         }
       })
   },
-  addBoard: function(name, image) {
+  createBoard: function(name, image) {
     var newBoard = {
       ownerId: st.user.uid,
       boardname: name,
@@ -101,6 +95,20 @@ var ax = {
         console.log(updatedUser);
 
         st.setUser(updatedUser);
+      })
+  },
+  addToBoard: function(name, image) {
+    var update = {
+      ownerId: st.user.uid,
+      boardname: name,
+      image: image
+    };
+
+    axios.put(urlBase + 'boards/add', update)
+      .then(function(response) {
+        console.log(response);
+
+        ax.getBoards(st.user);
       })
   },
 

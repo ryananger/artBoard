@@ -27,12 +27,18 @@ const ImageButtons = ({image, isFavorite}) => {
       if (selected === 'new') {
         setTextIn(true);
         return;
+      } else {
+        ax.addToBoard(selected, image);
+
+        st.lastBoard = selected;
+        setAdding(false);
       }
     } else {
       var name = document.getElementById('boardForm').boardName.value;
 
-      ax.addBoard(name, image);
+      ax.createBoard(name, image);
 
+      st.lastBoard = selected;
       setAdding(false);
       setTextIn(false);
     }
@@ -59,13 +65,19 @@ const ImageButtons = ({image, isFavorite}) => {
       return (
         <div className='boardSelect h'>
           <select id='select' className='boardInput'>
+            {renderOptions()}
             <option value='new'>New board...</option>
           </select>
           <Check className='checkMark' size={32} onClick={()=>{handleAdd('select')}}/>
         </div>
       )
     }
+  };
 
+  var renderOptions = function() {
+    return st.user.boards.map((board)=>{
+      return <option value={board.boardname}>{board.boardname}</option>
+    })
   };
 
   useEffect(function() {

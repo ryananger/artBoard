@@ -43,7 +43,11 @@ app.get('/boards/:uid', function(req, res) {
 });
 
 app.post('/boards', function(req, res) {
-  controller.addBoard(req, res);
+  controller.createBoard(req, res);
+});
+
+app.put('/boards/add', function(req, res) {
+  controller.addToBoard(req, res);
 });
 
 const PORT = 4001;
