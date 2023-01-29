@@ -92,8 +92,6 @@ var ax = {
           boards: response.data
         };
 
-        console.log(updatedUser);
-
         st.setUser(updatedUser);
       })
   },
@@ -106,9 +104,29 @@ var ax = {
 
     axios.put(urlBase + 'boards/add', update)
       .then(function(response) {
+        ax.getBoards(st.user);
+      })
+  },
+  removeFromBoard: function(boardname, image) {
+    var update = {
+      ownerId: st.user.uid,
+      boardname: boardname,
+      image: image
+    };
+
+    axios.put(urlBase + 'boards/removeImage', update)
+      .then(function(response) {
         console.log(response);
 
-        ax.getBoards(st.user);
+        st.setUser(response.data);
+      })
+  },
+  removeBoard: function(board) {
+    axios.put(urlBase + 'boards/remove', board)
+      .then(function(response) {
+        console.log(response);
+
+        st.setUser(response.data);
       })
   },
 

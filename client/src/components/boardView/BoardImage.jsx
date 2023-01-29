@@ -10,7 +10,7 @@ import st           from '../state.js';
 import PreLoad      from './PreLoad.jsx';
 import ImageButtons from './BoardImageButtons.jsx';
 
-const Image = ({image, index}) => {
+const Image = ({image, index, board}) => {
   const ratio = {aspectRatio: image.width/image.height};
   const style = {
     ...ratio,
@@ -26,8 +26,7 @@ const Image = ({image, index}) => {
         style={style}
         onClick={()=>{st.setZoom(index)}}
       />
-      <ImageButtons image={image}/>
-      <PreLoad image={image}/>
+      <ImageButtons image={image} board={board}/>
     </div>
   );
 };

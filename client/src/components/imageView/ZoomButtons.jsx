@@ -21,6 +21,7 @@ const ZoomButtons = ({image}) => {
 
   return (
     <div className='imageButtons v' style={buttonStyle}>
+
       <Heart className={`imageButton ${isFavorite ? 'fav': ''}`} size={32} onClick={handleFav}/>
       <Add   className='imageButton add' size={32}/>
 

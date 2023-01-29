@@ -1,14 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import { HiDotsVertical as Dots } from 'react-icons/hi';
+import { AiFillPlusCircle  as Add } from 'react-icons/ai';
+import { IoMdRemoveCircle as Remove} from 'react-icons/io';
 
 import st      from '../state.js';
 import ax      from '../../util/ax.js';
 import helpers from '../../util/helpers.js';
 
-const BoardImageButtons = ({image, isFavorite}) => {
+const BoardImageButtons = ({image, board}) => {
+  var removeImage = function() {
+    ax.removeFromBoard(board.boardname, image);
+  };
+
   return (
     <div className='boardImageButtons v'>
-      <Dots className='boardImageButton add' size={32}/>
+      {/* <Add className='boardImageButton add' size={32}/> */}
+      <Remove className='boardImageButton remove' size={32} onClick={removeImage}/>
     </div>
   );
 };

@@ -79,7 +79,7 @@ const ImageButtons = ({image, isFavorite}) => {
 
   var renderOptions = function() {
     return boards.map((board, i)=>{
-      return <option value={i}>{board.boardname}</option>
+      return <option key={i} value={i}>{board.boardname}</option>
     })
   };
 

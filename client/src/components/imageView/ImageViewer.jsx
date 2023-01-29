@@ -56,11 +56,11 @@ const ImageViewer = () => {
 
   var getPhotos = function() {
     if (st.view === 'home') {
-      ax.searchPhotos(st.search.query, 1 + helpers.rand(4));
+      ax.searchPhotos(st.search.query, 1 + helpers.rand(2));
     }
   };
 
-  useEffect(getPhotos, [st.view === 'home']);
+  useEffect(getPhotos, [st.view]);
 
   return (
     <div id='viewer' className='imageViewer h' onScroll={handleScroll} style={modalStyle()}>

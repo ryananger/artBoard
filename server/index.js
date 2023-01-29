@@ -50,6 +50,14 @@ app.put('/boards/add', function(req, res) {
   controller.addToBoard(req, res);
 });
 
+app.put('/boards/removeImage', function(req, res) {
+  controller.removeFromBoard(req, res);
+})
+
+app.put('/boards/remove', function(req, res) {
+  controller.removeBoard(req, res);
+})
+
 const PORT = 4001;
 
 app.listen(PORT);

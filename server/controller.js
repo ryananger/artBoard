@@ -112,6 +112,32 @@ var controller = {
       .then(function(response) {
         res.send(`Added to ${filter.boardname}.`);
       })
+  },
+  removeFromBoard: function(req, res) {
+    var filter = {
+      ownerId: req.body.ownerId,
+      boardname: req.body.boardname
+    };
+
+    var image = req.body.image;
+    var update = {'$pull': {images: {id: image.id}}};
+    var option = {new: true};
+
+    Board.findOneAndUpdate(filter, update, option)
+      .then(function(board) {
+        console.log(image.id, board);
+
+        controller.getUser(filter.ownerId, res);
+      })
+  },
+  removeBoard: function(req, res) {
+    var board = req.body;
+    var uid = board.ownerId;
+
+    Board.deleteOne(board)
+      .then(function() {
+        controller.getUser(uid, res);
+      })
   }
 };
 

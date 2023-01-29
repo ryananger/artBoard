@@ -12,7 +12,7 @@ import Profile     from './Profile.jsx';
 import Header      from './header/Header.jsx';
 import Featured    from './Featured.jsx';
 import ImageViewer from './imageView/ImageViewer.jsx';
-import BoardViewer from './boardView/BoardViewer_.jsx';
+import BoardViewer from './boardView/BoardViewer.jsx';
 
 var defaultQuery = {
   title: 'Drawing',
