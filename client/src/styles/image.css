@@ -126,6 +126,10 @@
   color: var(--salmon);
 }
 
+.inBoard {
+  color: var(--sky);
+}
+
 .add:hover, .checkMark:hover {
   cursor: pointer;
   color: var(--sky);

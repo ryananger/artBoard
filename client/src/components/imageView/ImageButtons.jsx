@@ -15,6 +15,7 @@ const ImageButtons = ({image, inZoom}) => {
 
   const buttonStyle = inZoom ? {top: '48px', right: '1.5vh'} : {top: 0};
   const isFavorite  = helpers.isFavorite(image);
+  const isInBoard   = helpers.isInBoard(image);
 
   var toggleFull = function() {
     st.setFull(!st.fullZoom);
@@ -46,7 +47,7 @@ const ImageButtons = ({image, inZoom}) => {
   return (
     <div className='imageButtons v' style={buttonStyle}>
       <Heart className={`imageButton ${isFavorite ? 'fav': ''}`} size={32} onClick={handleFav}/>
-      <Add   className='imageButton add' size={32} onClick={toggleAdding}/>
+      <Add   className={`imageButton ${isInBoard ? 'inBoard': ''}`} size={32} onClick={toggleAdding}/>
       {adding && <AddBoard image={image} setAdding={setAdding}/>}
 
       {inZoom && <Full className='fullButton' size={24} onClick={toggleFull}/>}

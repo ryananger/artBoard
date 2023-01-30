@@ -18,6 +18,21 @@ var helpers = {
 
     return fav;
   },
+  isInBoard: function(image) {
+    if (!st.user) {return false;}
+
+    var inBoard = false;
+
+    st.user.boards.map((board)=>{
+      board.images.map((entry)=>{
+        if (entry.id === image.id) {
+          inBoard = true;
+        }
+      })
+    });
+
+    return inBoard;
+  },
   handleFav: function(image, isFavorite) {
     if (!st.user) {return;}
 
