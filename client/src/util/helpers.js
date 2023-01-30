@@ -23,13 +23,15 @@ var helpers = {
 
     if (!isFavorite) {
       ax.addFavorite(image);
-      st.intAlerts(st.alerts + 1);
-      st.setAlert('Added to favorites!');
+      helpers.alert('Added to favorites!');
     } else {
       ax.removeFavorite(image);
-      st.intAlerts(st.alerts + 1);
-      st.setAlert('Removed from favorites.');
+      helpers.alert('Removed from favorites.');
     }
+  },
+  alert: function(text) {
+    st.intAlerts(st.alerts + 1);
+    st.setAlert(text);
   }
 };
 

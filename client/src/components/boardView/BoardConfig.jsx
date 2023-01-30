@@ -24,6 +24,7 @@ const BoardConfig = function({setBoard}) {
   };
 
   var removeBoard = function() {
+    helpers.alert(`Removed ${boards[selectedBoard].boardname}.`)
     ax.removeBoard(boards[selectedBoard]);
 
     if (st.lastBoard === selectedBoard) {

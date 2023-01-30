@@ -9,6 +9,7 @@ import helpers from '../../util/helpers.js';
 
 const BoardImageButtons = ({image, board}) => {
   var removeImage = function() {
+    helpers.alert(`Removed from ${board.boardname}.`);
     ax.removeFromBoard(board.boardname, image);
   };
 

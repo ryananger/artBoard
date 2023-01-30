@@ -69,9 +69,9 @@ const App = function() {
 
   return (
     <div id='app' className='app'>
+      <Alert />
       <Header />
       {renderView()}
-      <Alert />
     </div>
   )
 };

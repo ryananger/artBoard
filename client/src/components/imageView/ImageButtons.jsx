@@ -8,7 +8,6 @@ import st      from '../state.js';
 import ax      from '../../util/ax.js';
 import helpers from '../../util/helpers.js';
 
-import Alert from '../Alert.jsx';
 import AddBoard from './AddBoard.jsx';
 
 const ImageButtons = ({image, inZoom}) => {
@@ -41,9 +40,7 @@ const ImageButtons = ({image, inZoom}) => {
 
   var loginAlert = function() {
     if (st.alerting) {return;}
-
-    st.intAlerts(st.alerts + 1);
-    st.setAlert('You have to be logged in to do that!');
+    helpers.alert('You have to be logged in to do that!');
   };
 
   return (

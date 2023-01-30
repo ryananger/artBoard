@@ -43,8 +43,7 @@ window.addEventListener('keypress', function(e) {
       if (!image) {return;}
 
       ax.addToBoard(name, image);
-      st.intAlerts(st.alerts + 1);
-      st.setAlert(`Added to ${name}!`);
+      helpers.alert(`Added to ${name}!`);
       break;
   }
 });

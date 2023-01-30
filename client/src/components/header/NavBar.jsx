@@ -8,9 +8,11 @@ import '../../styles/navbar.css';
 import st   from '../state.js';
 import ax   from '../../util/ax.js';
 import auth from '../../util/auth.js';
+import helpers from '../../util/helpers.js';
 
 const NavBar = () => {
   var handleLogout = function() {
+    helpers.alert('Logout successful.');
     document.cookie = 'user=;';
     auth.logOut();
     st.setView('home');
