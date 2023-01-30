@@ -26,6 +26,9 @@ const AddBoard = ({image, setAdding}) => {
 
         ax.addToBoard(name, image);
 
+        st.intAlerts(st.alerts + 1);
+        st.setAlert(`Added to ${name}!`);
+
         st.lastBoard = selected;
         setAdding(false);
       }
@@ -34,6 +37,9 @@ const AddBoard = ({image, setAdding}) => {
 
       st.lastBoard = boards.length;
       ax.createBoard(name, image);
+
+      st.intAlerts(st.alerts + 1);
+      st.setAlert(`Added to ${name}!`);
 
       setAdding(false);
       setTextIn(false);

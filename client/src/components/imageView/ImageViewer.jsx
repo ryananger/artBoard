@@ -5,6 +5,7 @@ import ax      from '../../util/ax.js';
 import helpers from '../../util/helpers.js';
 
 import st        from '../state.js';
+import Alert     from '../Alert.jsx';
 import Image     from './Image.jsx';
 import ZoomImage from './ZoomImage.jsx';
 

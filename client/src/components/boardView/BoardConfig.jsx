@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
-import { IoMdRemoveCircle as Remove} from 'react-icons/io';
+import { IoMdRemoveCircle as Remove } from 'react-icons/io';
+import { BiGridSmall as Small } from 'react-icons/bi';
+import { BsFillSquareFill as Large} from 'react-icons/bs';
 
 import '../../styles/boardViewer.css';
 import ax      from '../../util/ax.js';
@@ -7,12 +9,26 @@ import helpers from '../../util/helpers.js';
 
 import st        from '../state.js';
 
-const boardConfig = function({board, setBoard}) {
+const sizes = ['small', 'medium', 'large2x'];
+
+const BoardConfig = function({setBoard}) {
   const [selectedBoard, setSelected] = useState(st.lastBoard || 0);
-  const boards = st.user.boards;
+  const boards  = st.user.boards;
+  const size    = st.boardImageSize;
+  const setSize = st.setSize;
+
+  var handleSize = function(dir) {
+    if (sizes[sizes.indexOf(size) + dir]) {
+      st.setSize(sizes[sizes.indexOf(size) + dir]);
+    }
+  };
 
   var removeBoard = function() {
     ax.removeBoard(boards[selectedBoard]);
+
+    if (st.lastBoard === selectedBoard) {
+      st.lastBoard = null;
+    }
 
     setSelected(boards[selectedBoard - 1] ? selectedBoard - 1 : 0);
   };
@@ -56,9 +72,15 @@ const boardConfig = function({board, setBoard}) {
       }}>
         {renderOptions()}
       </select>
-      {st.user.boards[0] && <Remove className='boardImageButton remove' size={32} onClick={removeBoard}/>}
+      <div className='boardConfigButtons h'>
+        <div className='h'>
+          <Small className='sizeButton' size={32} onClick={()=>{handleSize(-1)}}/>
+          <Large className='sizeButton' size={24} onClick={()=>{handleSize(1)}}/>
+        </div>
+        {st.user.boards[0] && <Remove className='boardImageButton remove' size={32} onClick={removeBoard}/>}
+      </div>
     </div>
   );
 };
 
-export default boardConfig;
+export default BoardConfig;

@@ -10,20 +10,23 @@ import st           from '../state.js';
 import ImageButtons from './BoardImageButtons.jsx';
 
 const Image = ({image, index, board}) => {
-  const ratio = {aspectRatio: image.width/image.height};
-  const style = {
-    ...ratio,
+  const mod = st.boardImageSize !== 'large2x' ? 'small' : '';
+  const containerStyle = {
+    aspectRatio: image.width/image.height
+  };
+
+  const imageStyle = {
+    aspectRatio: image.width/image.height,
     backgroundColor: image.avg_color
   };
 
   return (
-    <div className='boardImageContainer v' style={ratio}>
+    <div className={`boardImageContainer ${mod} v`} style={containerStyle}>
       <img
         id={'image' + index}
-        src={image.src.large2x}
+        src={image.src[st.boardImageSize]}
         className='boardImage'
-        style={style}
-        onClick={()=>{st.setZoom(index)}}
+        style={imageStyle}
       />
       {st.user.boards[0] && <ImageButtons image={image} board={board}/>}
     </div>

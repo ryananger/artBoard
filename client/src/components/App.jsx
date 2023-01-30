@@ -7,6 +7,7 @@ import helpers     from '../util/helpers.js';
 import cookieParse from '../util/cookieParse.js';
 
 import st          from './state.js';
+import Alert       from './Alert.jsx';
 import Login       from './Login.jsx';
 import Profile     from './Profile.jsx';
 import Header      from './header/Header.jsx';
@@ -70,6 +71,7 @@ const App = function() {
     <div id='app' className='app'>
       <Header />
       {renderView()}
+      <Alert />
     </div>
   )
 };

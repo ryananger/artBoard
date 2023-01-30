@@ -34,3 +34,17 @@
   background-color: var(--cream);
   box-shadow: 0 10px 15px #cc69503d;
 }
+
+.boardConfig * {
+  user-select: none;
+}
+
+.boardConfigButtons {
+  width: 100%;
+  padding-left: 4px;
+}
+
+.sizeButton:hover {
+  cursor: pointer;
+  color: var(--sky);
+}

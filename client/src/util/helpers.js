@@ -23,8 +23,12 @@ var helpers = {
 
     if (!isFavorite) {
       ax.addFavorite(image);
+      st.intAlerts(st.alerts + 1);
+      st.setAlert('Added to favorites!');
     } else {
       ax.removeFavorite(image);
+      st.intAlerts(st.alerts + 1);
+      st.setAlert('Removed from favorites.');
     }
   }
 };

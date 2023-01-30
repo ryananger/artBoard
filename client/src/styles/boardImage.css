@@ -2,10 +2,16 @@
 
 .boardImageContainer {
   max-height: 90%;
+  min-width: 10%;
   max-width: 90%;
   margin: 4vh;
   position: relative;
   user-select: none;
+}
+
+.small {
+  max-width: 30%;
+  margin: 1.5vh;
 }
 
 .boardImageContainer * {

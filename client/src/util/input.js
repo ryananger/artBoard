@@ -28,21 +28,39 @@ window.addEventListener('keypress', function(e) {
     case 'f':
       if (st.view !== 'home' && st.view !== 'favorites') {return;}
 
-      var image;
-
-      if (!st.imageData[st.zoom]) {
-        if (mouse.over !== null) {
-          image = st.imageData[mouse.over];
-        } else {
-          return;
-        }
-      } else {
-        image = st.imageData[st.zoom];
-      }
-
+      var image = whichImage();
       var isFavorite = helpers.isFavorite(image);
 
       helpers.handleFav(image, isFavorite);
       break;
+    case 'a':
+      if (st.view !== 'home' && st.view !== 'favorites') {return;}
+      if (!st.lastBoard) {return;}
+
+      var image = whichImage();
+      var name = st.user.boards[st.lastBoard].boardname;
+
+      if (!image) {return;}
+
+      ax.addToBoard(name, image);
+      st.intAlerts(st.alerts + 1);
+      st.setAlert(`Added to ${name}!`);
+      break;
   }
 });
+
+var whichImage = function() {
+  var image;
+
+  if (!st.imageData[st.zoom]) {
+    if (mouse.over !== null) {
+      image = st.imageData[mouse.over];
+    } else {
+      return;
+    }
+  } else {
+    image = st.imageData[st.zoom];
+  }
+
+  return image;
+};

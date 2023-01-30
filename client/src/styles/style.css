@@ -62,7 +62,9 @@ h1, h2, h3 {
 }
 
 .alert {
+  z-index: 11;
   position: absolute;
+  bottom: 10vh;
   background-color: var(--cream);
   min-width: 200px;
   width: max-content;
@@ -79,7 +81,7 @@ h1, h2, h3 {
 .visible {
   visibility: visible;
   opacity: 1;
-  transition: opacity 1s linear;
+  transition: opacity 0.1s linear;
 }
 
 .hidden {

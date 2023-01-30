@@ -12,8 +12,7 @@ import Alert from '../Alert.jsx';
 import AddBoard from './AddBoard.jsx';
 
 const ImageButtons = ({image, inZoom}) => {
-  const [alerting, setAlerting] = useState(false);
-  const [adding,   setAdding]   = useState(false);
+  const [adding, setAdding] = useState(false);
 
   const buttonStyle = inZoom ? {top: '48px', right: '1.5vh'} : {top: 0};
   const isFavorite  = helpers.isFavorite(image);
@@ -41,13 +40,14 @@ const ImageButtons = ({image, inZoom}) => {
   };
 
   var loginAlert = function() {
-    setAlerting(true);
-    setTimeout(()=>{setAlerting(false)}, 2000);
+    if (st.alerting) {return;}
+
+    st.intAlerts(st.alerts + 1);
+    st.setAlert('You have to be logged in to do that!');
   };
 
   return (
     <div className='imageButtons v' style={buttonStyle}>
-      {alerting && <Alert text={'You have to be logged in to do that!'} type='login' setAlerting={setAlerting}/>}
       <Heart className={`imageButton ${isFavorite ? 'fav': ''}`} size={32} onClick={handleFav}/>
       <Add   className='imageButton add' size={32} onClick={toggleAdding}/>
       {adding && <AddBoard image={image} setAdding={setAdding}/>}

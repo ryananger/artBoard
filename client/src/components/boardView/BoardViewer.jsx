@@ -8,9 +8,13 @@ import st        from '../state.js';
 import Image     from './BoardImage.jsx';
 import Config    from './BoardConfig.jsx';
 
-const boardViewer = function() {
+const BoardViewer = function() {
   const [board, setBoard] = useState(null);
+  const [boardImageSize, setSize] = useState(st.boardImageSize || 'large2x');
   const boards = st.user.boards;
+
+  st.boardImageSize = boardImageSize;
+  st.setSize = setSize;
 
   var renderImages = function() {
     var images = [];
@@ -32,4 +36,4 @@ const boardViewer = function() {
   );
 };
 
-export default boardViewer;
+export default BoardViewer;
