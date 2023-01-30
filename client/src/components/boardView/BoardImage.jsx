@@ -25,7 +25,7 @@ const Image = ({image, index, board}) => {
         style={style}
         onClick={()=>{st.setZoom(index)}}
       />
-      <ImageButtons image={image} board={board}/>
+      {st.user.boards[0] && <ImageButtons image={image} board={board}/>}
     </div>
   );
 };

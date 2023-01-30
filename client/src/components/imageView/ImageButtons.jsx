@@ -59,9 +59,9 @@ const ImageButtons = ({image, inZoom}) => {
     } else {
       var name = document.getElementById('boardForm').boardName.value;
 
+      st.lastBoard = boards.length;
       ax.createBoard(name, image);
 
-      st.lastBoard = name;
       setAdding(false);
       setTextIn(false);
     }
@@ -118,7 +118,7 @@ const ImageButtons = ({image, inZoom}) => {
 
       select.value = st.lastBoard;
     }
-  }, [adding]);
+  }, [adding, boards]);
 
   return (
     <div className='imageButtons v' style={buttonStyle}>

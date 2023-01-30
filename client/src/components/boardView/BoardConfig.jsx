@@ -13,9 +13,15 @@ const boardConfig = function({board, setBoard}) {
 
   var removeBoard = function() {
     ax.removeBoard(boards[selectedBoard]);
+
+    setSelected(boards[selectedBoard - 1] ? selectedBoard - 1 : 0);
   };
 
   var renderOptions = function() {
+    if (boards.length === 0) {
+      return <option value={0}>Favorites</option>;
+    }
+
     return boards.map((board, i)=>{
       return <option key={i} value={i}>{board.boardname}</option>
     });
@@ -28,6 +34,8 @@ const boardConfig = function({board, setBoard}) {
     if (boards[selectedBoard]) {
       setBoard(boards[selectedBoard]);
       return;
+    } else {
+      select.value = 0;
     }
 
     if (!board && boards[selectedBoard]) {
@@ -48,7 +56,7 @@ const boardConfig = function({board, setBoard}) {
       }}>
         {renderOptions()}
       </select>
-      <Remove className='boardImageButton remove' size={32} onClick={removeBoard}/>
+      {st.user.boards[0] && <Remove className='boardImageButton remove' size={32} onClick={removeBoard}/>}
     </div>
   );
 };
