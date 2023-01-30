@@ -60,3 +60,30 @@ h1, h2, h3 {
   min-height: 48px;
   color: var(--salmon);
 }
+
+.alert {
+  position: absolute;
+  background-color: var(--cream);
+  min-width: 200px;
+  width: max-content;
+  padding: 1vh;
+  border-radius: 25px;
+  border: 2px solid var(--darkText);
+  box-shadow: 0 2px 3px var(--shadow);
+}
+
+.buttonAlert {
+  left: -280px;
+}
+
+.visible {
+  visibility: visible;
+  opacity: 1;
+  transition: opacity 1s linear;
+}
+
+.hidden {
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s 1s, opacity 1s linear;
+}

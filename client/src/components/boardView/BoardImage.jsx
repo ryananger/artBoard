@@ -7,7 +7,6 @@ import ax from '../../util/ax.js';
 import helpers from '../../util/helpers.js';
 
 import st           from '../state.js';
-import PreLoad      from './PreLoad.jsx';
 import ImageButtons from './BoardImageButtons.jsx';
 
 const Image = ({image, index, board}) => {

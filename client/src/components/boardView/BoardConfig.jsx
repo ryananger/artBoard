@@ -8,7 +8,7 @@ import helpers from '../../util/helpers.js';
 import st        from '../state.js';
 
 const boardConfig = function({board, setBoard}) {
-  const [selectedBoard, setSelected] = useState(0);
+  const [selectedBoard, setSelected] = useState(st.lastBoard || 0);
   const boards = st.user.boards;
 
   var removeBoard = function() {
@@ -22,18 +22,11 @@ const boardConfig = function({board, setBoard}) {
   };
 
   useEffect(function() {
+    var select = document.getElementById('boardSelect');
+    select.value = selectedBoard;
+
     if (boards[selectedBoard]) {
       setBoard(boards[selectedBoard]);
-      return;
-    }
-
-    if (st.lastBoard) {
-      var select = document.getElementById('boardSelect');
-
-      select.value = st.lastBoard;
-
-      setBoard(boards[st.lastBoard]);
-      setSelected(st.lastBoard);
       return;
     }
 
@@ -50,7 +43,7 @@ const boardConfig = function({board, setBoard}) {
         id='boardSelect'
         className='boardInput'
         onChange={(e)=>{
-          setBoard(boards[e.target.value]);
+          setBoard(boards[e.target.value])
           setSelected(e.target.value);
       }}>
         {renderOptions()}

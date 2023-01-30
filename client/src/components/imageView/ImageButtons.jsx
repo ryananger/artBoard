@@ -2,23 +2,43 @@ import React, { useState, useEffect } from 'react';
 import { AiFillHeart       as Heart,
          AiFillPlusCircle  as Add,
          AiFillCheckCircle as Check } from 'react-icons/ai';
+import { BsFullscreen      as Full} from 'react-icons/bs';
 
 import st      from '../state.js';
 import ax      from '../../util/ax.js';
 import helpers from '../../util/helpers.js';
 
-const ImageButtons = ({image, isFavorite}) => {
-  const [adding, setAdding] = useState(false);
-  const [textIn, setTextIn] = useState(false);
-  const boards = st.user.boards;
-  const buttonStyle = {top: 0};
+import Alert from '../Alert.jsx';
 
-  var handleFav = function() {
-    helpers.handleFav(image, isFavorite);
+const ImageButtons = ({image, inZoom}) => {
+  const [alerting, setAlerting] = useState(false);
+  const [adding,   setAdding]   = useState(false);
+  const [textIn,   setTextIn]   = useState(false);
+
+  const boards = st.user ? st.user.boards : [];
+  const buttonStyle = inZoom ? {top: '48px', right: '1.5vh'} : {top: 0};
+  const isFavorite  = helpers.isFavorite(image);
+
+  var toggleFull = function() {
+    st.setFull(!st.fullZoom);
   };
 
   var toggleAdding = function() {
+    if (!st.user) {
+      loginAlert();
+      return;
+    }
+
     setAdding(!adding);
+  };
+
+  var handleFav = function() {
+    if (!st.user) {
+      loginAlert();
+      return;
+    }
+
+    helpers.handleFav(image, isFavorite);
   };
 
   var handleAdd = function(type) {
@@ -41,7 +61,7 @@ const ImageButtons = ({image, isFavorite}) => {
 
       ax.createBoard(name, image);
 
-      st.lastBoard = selected;
+      st.lastBoard = name;
       setAdding(false);
       setTextIn(false);
     }
@@ -83,13 +103,16 @@ const ImageButtons = ({image, isFavorite}) => {
     })
   };
 
+  var loginAlert = function() {
+    setAlerting(true);
+    setTimeout(()=>{setAlerting(false)}, 2000);
+  };
+
   useEffect(function() {
     if (!boards[0]) {
       setTextIn(true);
     }
-  }, [adding]);
 
-  useEffect(function() {
     if (adding && st.lastBoard) {
       var select = document.getElementById('select' + image.id);
 
@@ -99,9 +122,12 @@ const ImageButtons = ({image, isFavorite}) => {
 
   return (
     <div className='imageButtons v' style={buttonStyle}>
+      {alerting && <Alert text={'You have to be logged in to do that!'} type='login' setAlerting={setAlerting}/>}
       <Heart className={`imageButton ${isFavorite ? 'fav': ''}`} size={32} onClick={handleFav}/>
       <Add   className='imageButton add' size={32} onClick={toggleAdding}/>
       {adding && renderAdd()}
+
+      {inZoom && <Full className='fullButton' size={24} onClick={toggleFull}/>}
     </div>
   );
 };

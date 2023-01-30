@@ -40,7 +40,15 @@
 }
 
 .imageContainer:hover .hoverHeart {
-  display: none;
+  visibility: hidden;
+  opacity: 0;
+  transition: visibility 0s 0.25s, opacity 0.25s linear;
+}
+
+.imageContainer:not(:hover) .hoverHeart {
+  visibility: visible;
+  opacity: 1;
+  transition: opacity 0.25s linear;
 }
 
 .imageButtons {
@@ -63,6 +71,7 @@
 
 .boardSelect {
   position: absolute;
+  z-index: 1;
   top: 74px;
   right: 0;
   min-width: 10vw;

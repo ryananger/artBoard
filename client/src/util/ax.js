@@ -116,16 +116,12 @@ var ax = {
 
     axios.put(urlBase + 'boards/removeImage', update)
       .then(function(response) {
-        console.log(response);
-
         st.setUser(response.data);
       })
   },
   removeBoard: function(board) {
     axios.put(urlBase + 'boards/remove', board)
       .then(function(response) {
-        console.log(response);
-
         st.setUser(response.data);
       })
   },
