@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from 'react';
 
 import '../styles/featured.css';
+import st      from 'ryscott-st';
 import ax      from '../util/ax.js';
 import helpers from '../util/helpers.js';
 
-import st from './state.js';
 
 const featured = [
   {title: 'Wildlife',  query: 'wildlife animals'},

@@ -1,4 +1,4 @@
-import st from '../components/state.js';
+import st from 'ryscott-st';
 import ax from './ax.js';
 
 var helpers = {
@@ -45,7 +45,7 @@ var helpers = {
     }
   },
   alert: function(text) {
-    st.intAlerts(st.alerts + 1);
+    st.setAlerts(st.alerts + 1);
     st.setAlert(text);
   }
 };

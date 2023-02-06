@@ -1,20 +1,17 @@
 import React, { useState, useEffect } from 'react';
 
 import '../../styles/boardViewer.css';
+import st      from 'ryscott-st';
 import ax      from '../../util/ax.js';
 import helpers from '../../util/helpers.js';
 
-import st        from '../state.js';
 import Image     from './BoardImage.jsx';
 import Config    from './BoardConfig.jsx';
 
 const BoardViewer = function() {
   const [board, setBoard] = useState(null);
-  const [boardImageSize, setSize] = useState(st.boardImageSize || 'large2x');
+  const [boardSize, setBoardSize] = st.newState('boardSize', useState(st.boardSize || 'large2x'));
   const boards = st.user.boards;
-
-  st.boardImageSize = boardImageSize;
-  st.setSize = setSize;
 
   var renderImages = function() {
     var images = [];

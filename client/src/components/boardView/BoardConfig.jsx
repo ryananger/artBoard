@@ -4,22 +4,21 @@ import { BiGridSmall as Small } from 'react-icons/bi';
 import { BsFillSquareFill as Large} from 'react-icons/bs';
 
 import '../../styles/boardViewer.css';
+import st      from 'ryscott-st';
 import ax      from '../../util/ax.js';
 import helpers from '../../util/helpers.js';
 
-import st        from '../state.js';
 
 const sizes = ['small', 'medium', 'large2x'];
 
 const BoardConfig = function({setBoard}) {
   const [selectedBoard, setSelected] = useState(st.lastBoard || 0);
   const boards  = st.user.boards;
-  const size    = st.boardImageSize;
-  const setSize = st.setSize;
+  const size    = st.boardSize;
 
   var handleSize = function(dir) {
     if (sizes[sizes.indexOf(size) + dir]) {
-      st.setSize(sizes[sizes.indexOf(size) + dir]);
+      st.setBoardSize(sizes[sizes.indexOf(size) + dir]);
     }
   };
 

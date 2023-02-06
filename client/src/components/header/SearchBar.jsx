@@ -1,13 +1,11 @@
 import React, {useEffect, useState} from 'react';
 
-import st from '../state.js';
+import st from 'ryscott-st';
 import ax from '../../util/ax.js';
 
 var searchHistory = [];
 
 const SearchBar = function() {
-  const setSearch    = st.setSearch;
-
   var handleSearch = function(e) {
     e.preventDefault();
 

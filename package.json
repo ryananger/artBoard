@@ -23,7 +23,8 @@
     "path": "^0.12.7",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-icons": "^4.7.1"
+    "react-icons": "^4.7.1",
+    "ryscott-st": "^1.0.1"
   },
   "devDependencies": {
     "@babel/core": "^7.20.5",

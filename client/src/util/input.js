@@ -1,4 +1,4 @@
-import st      from '../components/state.js';
+import st from 'ryscott-st';
 import ax      from './ax.js';
 import helpers from './helpers.js';
 

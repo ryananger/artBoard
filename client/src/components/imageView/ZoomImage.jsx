@@ -4,9 +4,9 @@ import { BsArrowRightCircleFill as Next,
          BsFullscreen           as Full } from 'react-icons/bs';
 
 import '../../styles/zoom.css';
+import st from 'ryscott-st';
 import ax from '../../util/ax.js';
 
-import st          from '../state.js';
 import ImageButtons from './ImageButtons.jsx';
 
 const ZoomImage = ({index}) => {

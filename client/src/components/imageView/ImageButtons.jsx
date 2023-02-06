@@ -4,7 +4,7 @@ import { AiFillHeart       as Heart,
          AiFillCheckCircle as Check } from 'react-icons/ai';
 import { BsFullscreen      as Full } from 'react-icons/bs';
 
-import st      from '../state.js';
+import st      from 'ryscott-st';
 import ax      from '../../util/ax.js';
 import helpers from '../../util/helpers.js';
 
@@ -18,7 +18,7 @@ const ImageButtons = ({image, inZoom}) => {
   const isInBoard   = helpers.isInBoard(image);
 
   var toggleFull = function() {
-    st.setFull(!st.fullZoom);
+    st.setFullZoom(!st.fullZoom);
   };
 
   var toggleAdding = function() {
@@ -40,7 +40,7 @@ const ImageButtons = ({image, inZoom}) => {
   };
 
   var loginAlert = function() {
-    if (st.alerting) {return;}
+    if (st.alert) {return;}
     helpers.alert('You have to be logged in to do that!');
   };
 

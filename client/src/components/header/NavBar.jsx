@@ -5,9 +5,9 @@ import {HiPencil as Draw}             from 'react-icons/hi';
 import {RiLogoutBoxRFill as LogOut}   from 'react-icons/ri';
 
 import '../../styles/navbar.css';
-import st   from '../state.js';
-import ax   from '../../util/ax.js';
-import auth from '../../util/auth.js';
+import st      from 'ryscott-st';
+import ax      from '../../util/ax.js';
+import auth    from '../../util/auth.js';
 import helpers from '../../util/helpers.js';
 
 const NavBar = () => {

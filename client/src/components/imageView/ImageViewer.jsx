@@ -1,10 +1,10 @@
 import React, { useState, useEffect } from 'react';
 
 import '../../styles/imageViewer.css';
+import st      from 'ryscott-st';
 import ax      from '../../util/ax.js';
 import helpers from '../../util/helpers.js';
 
-import st        from '../state.js';
 import Alert     from '../Alert.jsx';
 import Image     from './Image.jsx';
 import ZoomImage from './ZoomImage.jsx';
@@ -12,13 +12,8 @@ import ZoomImage from './ZoomImage.jsx';
 const ImageViewer = () => {
   const [currentPage, setPage]  = useState(1);
   const [fetching, setFetching] = useState(false);
-  const [zoom, setZoom]         = useState(null);
-  const [fullZoom, setFull]     = useState(false);
-
-  st.zoom     = zoom;
-  st.setZoom  = setZoom;
-  st.fullZoom = fullZoom;
-  st.setFull  = setFull;
+  const [zoom, setZoom]         = st.newState('zoom', useState(null));
+  const [fullZoom, setFullZoom] = st.newState('fullZoom', useState(false));
 
   var handleScroll = function(e) {
     if (st.view !== 'home') {return;}

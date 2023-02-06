@@ -1,9 +1,9 @@
 import React, {useEffect, useState} from 'react';
 
 import '../../styles/header.css';
+import st from 'ryscott-st';
 import ax from '../../util/ax.js';
 
-import st        from '../state.js';
 import SearchBar from './SearchBar.jsx';
 import NavBar    from './NavBar.jsx';
 

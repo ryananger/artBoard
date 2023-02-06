@@ -1,12 +1,12 @@
 import React, {useEffect, useState} from 'react';
 
 import '../styles/style.css';
+import st          from 'ryscott-st';
 import ax          from '../util/ax.js';
 import input       from '../util/input.js';
 import helpers     from '../util/helpers.js';
 import cookieParse from '../util/cookieParse.js';
 
-import st          from './state.js';
 import Alert       from './Alert.jsx';
 import Login       from './Login.jsx';
 import Profile     from './Profile.jsx';
@@ -23,19 +23,10 @@ var defaultQuery = {
 var cookie = cookieParse();
 
 const App = function() {
-  const [imageData, setImageData] = useState([]);
-  const [search, setSearch]       = useState(defaultQuery);
-  const [view, setView]           = useState('home');
-  const [user, setUser]           = useState(null);
-
-  st.imageData    = imageData;
-  st.setImageData = setImageData;
-  st.search       = search;
-  st.setSearch    = setSearch;
-  st.view         = view;
-  st.setView      = setView;
-  st.user         = user;
-  st.setUser      = setUser;
+  const [imageData, setImageData] = st.newState('imageData', useState([]));
+  const [search, setSearch]       = st.newState('search', useState(defaultQuery));
+  const [view, setView]           = st.newState('view', useState('home'));
+  const [user, setUser]           = st.newState('user', useState(null));
 
   var renderView = function() {
     switch (view) {

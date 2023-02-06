@@ -4,7 +4,7 @@ import { AiFillHeart       as Heart,
          AiFillCheckCircle as Check } from 'react-icons/ai';
 import { BsFullscreen      as Full} from 'react-icons/bs';
 
-import st      from '../state.js';
+import st      from 'ryscott-st';
 import ax      from '../../util/ax.js';
 import helpers from '../../util/helpers.js';
 
@@ -26,7 +26,7 @@ const AddBoard = ({image, setAdding}) => {
 
         ax.addToBoard(name, image);
 
-        st.intAlerts(st.alerts + 1);
+        st.setAlerts(st.alerts + 1);
         st.setAlert(`Added to ${name}!`);
 
         st.lastBoard = selected;
@@ -38,7 +38,7 @@ const AddBoard = ({image, setAdding}) => {
       st.lastBoard = boards.length;
       ax.createBoard(name, image);
 
-      st.intAlerts(st.alerts + 1);
+      st.setAlerts(st.alerts + 1);
       st.setAlert(`Added to ${name}!`);
 
       setAdding(false);

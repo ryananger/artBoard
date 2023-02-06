@@ -1,6 +1,6 @@
 import axios from 'axios';
 
-import st from '../components/state.js';
+import st from 'ryscott-st';
 
 var urlBase = process.env.URL;
 

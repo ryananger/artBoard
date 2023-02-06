@@ -3,7 +3,7 @@ import { HiDotsVertical as Dots } from 'react-icons/hi';
 import { AiFillPlusCircle  as Add } from 'react-icons/ai';
 import { IoMdRemoveCircle as Remove} from 'react-icons/io';
 
-import st      from '../state.js';
+import st      from 'ryscott-st';
 import ax      from '../../util/ax.js';
 import helpers from '../../util/helpers.js';
 
